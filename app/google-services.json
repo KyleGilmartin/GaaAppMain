@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "137154419494",
+    "firebase_url": "https://gaa-app-c0be7.firebaseio.com",
+    "project_id": "gaa-app-c0be7",
+    "storage_bucket": "gaa-app-c0be7.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137154419494:android:e751108bcb8deb51d8bfe7",
+        "android_client_info": {
+          "package_name": "edu.itsligo.gaa_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137154419494-5scv7unjqgr4os60qpfl81bnfpqcv02m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQyQZp0Ko7gpJgg1W-KrCjyQPgPoJ3i1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137154419494-5scv7unjqgr4os60qpfl81bnfpqcv02m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:137154419494:android:d097425b4b6fc712d8bfe7",
+        "android_client_info": {
+          "package_name": "edu.itsligo.gaaappmain"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "137154419494-5scv7unjqgr4os60qpfl81bnfpqcv02m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCQyQZp0Ko7gpJgg1W-KrCjyQPgPoJ3i1M"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "137154419494-5scv7unjqgr4os60qpfl81bnfpqcv02m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
