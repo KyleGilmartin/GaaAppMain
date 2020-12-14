@@ -3,6 +3,7 @@ package edu.itsligo.gaaappmain;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -26,11 +27,23 @@ public class HomeFragmentNews extends Fragment {
 
     private RecyclerView mNewslist;
     private DatabaseReference ref;
-    ConstraintLayout expandlayout;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.homefragment_news, container, false);
+        final LoadingDialog loadingDialog = new LoadingDialog(getActivity());
+        loadingDialog.startLoadingDialog();
+
+
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                loadingDialog.dismissDialog();
+            }
+        }, 4000);
 
         ref = FirebaseDatabase.getInstance().getReference().child("NewTable");
         ref.keepSynced(true);
@@ -40,13 +53,9 @@ public class HomeFragmentNews extends Fragment {
         mNewslist.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
-
-
-
-
         return v;
     }
+
 
     @Override
     public void onStart() {
@@ -56,20 +65,17 @@ public class HomeFragmentNews extends Fragment {
             protected void populateViewHolder(NewsViewHolder newsViewHolder, News news, int i) {
                 newsViewHolder.settitle(news.getTitle());
                 newsViewHolder.setDesc(news.getDesc());
-                newsViewHolder.setImage(getContext(),news.getImageURL());
+                newsViewHolder.setImage(getContext(), news.getImageURL());
 
 
                 newsViewHolder.imgExpand.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
 
-                        if(newsViewHolder.desc.getVisibility()==View.GONE)
-                        {
+                        if (newsViewHolder.desc.getVisibility() == View.GONE) {
                             newsViewHolder.desc.setVisibility(View.VISIBLE);
                             newsViewHolder.imgExpand.setImageResource(R.drawable.ic_expand_more_black_36dp);
-                        }
-                        else
-                        {
+                        } else {
                             newsViewHolder.desc.setVisibility(View.GONE);
                             newsViewHolder.imgExpand.setImageResource(R.drawable.ic_contact);
                         }
@@ -85,26 +91,27 @@ public class HomeFragmentNews extends Fragment {
         View mview;
         TextView desc;
         ImageButton imgExpand;
+
         public NewsViewHolder(View itemView) {
             super(itemView);
             mview = itemView;
-            desc=(TextView)mview.findViewById(R.id.supporting_text);
-            imgExpand=mview.findViewById(R.id.expand_button);
+            desc = (TextView) mview.findViewById(R.id.supporting_text);
+            imgExpand = mview.findViewById(R.id.expand_button);
         }
-        public void settitle(String title){
-            TextView post_title=(TextView)mview.findViewById(R.id.primary_text);
+
+        public void settitle(String title) {
+            TextView post_title = (TextView) mview.findViewById(R.id.primary_text);
             post_title.setText(title);
 
         }
-        public void setDesc(String desc)
-        {
-            TextView post_Desc=(TextView)mview.findViewById(R.id.supporting_text);
+
+        public void setDesc(String desc) {
+            TextView post_Desc = (TextView) mview.findViewById(R.id.supporting_text);
             post_Desc.setText(desc);
         }
 
-        public void setImage(Context ctx,String image)
-        {
-            ImageView post_image=(ImageView) mview.findViewById(R.id.media_image);
+        public void setImage(Context ctx, String image) {
+            ImageView post_image = (ImageView) mview.findViewById(R.id.media_image);
             Picasso.with(ctx).load(image).into(post_image);
         }
     }
