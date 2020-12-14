@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -26,7 +27,6 @@ public class HomeFragmentNews extends Fragment {
     private RecyclerView mNewslist;
     private DatabaseReference ref;
     ConstraintLayout expandlayout;
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -57,6 +57,25 @@ public class HomeFragmentNews extends Fragment {
                 newsViewHolder.settitle(news.getTitle());
                 newsViewHolder.setDesc(news.getDesc());
                 newsViewHolder.setImage(getContext(),news.getImageURL());
+
+
+                newsViewHolder.imgExpand.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        if(newsViewHolder.desc.getVisibility()==View.GONE)
+                        {
+                            newsViewHolder.desc.setVisibility(View.VISIBLE);
+                            newsViewHolder.imgExpand.setImageResource(R.drawable.ic_expand_more_black_36dp);
+                        }
+                        else
+                        {
+                            newsViewHolder.desc.setVisibility(View.GONE);
+                            newsViewHolder.imgExpand.setImageResource(R.drawable.ic_contact);
+                        }
+
+                    }
+                });
             }
         };
         mNewslist.setAdapter(firebaseRecyclerAdapter);
@@ -64,10 +83,13 @@ public class HomeFragmentNews extends Fragment {
 
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
         View mview;
-
+        TextView desc;
+        ImageButton imgExpand;
         public NewsViewHolder(View itemView) {
             super(itemView);
             mview = itemView;
+            desc=(TextView)mview.findViewById(R.id.supporting_text);
+            imgExpand=mview.findViewById(R.id.expand_button);
         }
         public void settitle(String title){
             TextView post_title=(TextView)mview.findViewById(R.id.primary_text);
