@@ -8,6 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -61,6 +62,8 @@ public class HomeFragmentHome extends Fragment {
             protected void populateViewHolder(NewsViewHolder2 newsViewHolder, News news, int i) {
                 newsViewHolder.setDesc(news.getDesc());
                 newsViewHolder.setImage(getContext(), news.getImageURL());
+
+                Toast.makeText(getContext(), String.valueOf(news), Toast.LENGTH_SHORT).show();
             }
 
 
@@ -76,19 +79,19 @@ public class HomeFragmentHome extends Fragment {
         public NewsViewHolder2(View itemView) {
             super(itemView);
             mview = itemView;
-            desc = (TextView) mview.findViewById(R.id.supporting_text);
+            desc = (TextView) mview.findViewById(R.id.supporting_text2);
 
         }
 
 
 
         public void setDesc(String desc) {
-            TextView post_Desc = (TextView) mview.findViewById(R.id.supporting_text);
+            TextView post_Desc = (TextView) mview.findViewById(R.id.supporting_text2);
             post_Desc.setText(desc);
         }
 
         public void setImage(Context ctx, String image) {
-            ImageView post_image = (ImageView) mview.findViewById(R.id.media_image);
+            ImageView post_image = (ImageView) mview.findViewById(R.id.media_image2);
             Picasso.with(ctx).load(image).into(post_image);
         }
     }
