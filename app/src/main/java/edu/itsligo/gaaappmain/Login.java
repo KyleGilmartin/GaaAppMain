@@ -31,11 +31,11 @@ import edu.itsligo.gaaappmain.Settings.Settings;
 
 public class Login extends AppCompatActivity {
     EditText email,password;
-    Button loginBtn,gotoRegister;
+    Button loginBtn;
     boolean valid = true;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    TextView forgotTextLink;
+    TextView forgotTextLink ,gotoRegister;
 
 
     @Override
@@ -211,10 +211,6 @@ public class Login extends AppCompatActivity {
         }
     }
 
-    public void gotoHome2(View view) {
-        Intent intent = new Intent(this,MainActivity.class);
-        startActivity(intent);
-    }
-    {
-    }
+
+
 }
