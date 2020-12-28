@@ -24,7 +24,7 @@ import com.google.firebase.firestore.FirebaseFirestore;
 
 public class Admin extends AppCompatActivity {
     private DrawerLayout draw;
-
+// firebase is used
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     TextView email,username;
