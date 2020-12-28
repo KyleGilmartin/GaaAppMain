@@ -4,6 +4,9 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,6 +16,7 @@ import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -22,6 +26,8 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.auth.User;
+
+import edu.itsligo.gaaappmain.Settings.Settings;
 
 public class Login extends AppCompatActivity {
     EditText email,password;
@@ -36,6 +42,8 @@ public class Login extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -45,6 +53,7 @@ public class Login extends AppCompatActivity {
         loginBtn = findViewById(R.id.loginBtn);
         gotoRegister = findViewById(R.id.gotoRegister);
         forgotTextLink = findViewById(R.id.forgotPassword);
+
 
 
         loginBtn.setOnClickListener(new View.OnClickListener() {
@@ -70,6 +79,8 @@ public class Login extends AppCompatActivity {
                 }
             }
         });
+
+
 
         gotoRegister.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -118,6 +129,21 @@ public class Login extends AppCompatActivity {
         });
 
 
+    }
+
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.dot_menu, menu);
+        return true;
+    }
+
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.settings:
+                Intent intent = new Intent(Login.this, Settings.class);
+                startActivity(intent);
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void checkUserAccessLevel(String uid) {

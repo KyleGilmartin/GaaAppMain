@@ -81,16 +81,17 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomeFragmentHome()).commit();
                 break;
-            case R.id.nav_message_home:
+            case R.id.nav_news_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomeFragmentNews()).commit();
                 break;
-            case R.id.nav_chat_home:
+            case R.id.nav_contact_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomeFragmentContact()).commit();
                 break;
             case R.id.nav_profile_home:
-                Toast.makeText(MainActivity.this,"prrrr",Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(MainActivity.this,Login.class);
+                startActivity(intent);
                 break;
             case R.id.nav_share_home:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
