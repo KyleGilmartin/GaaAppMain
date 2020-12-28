@@ -8,12 +8,12 @@
             android:icon="@drawable/ic_home"
             android:title="Home" />
         <item
-            android:id="@+id/nav_message_home"
-            android:icon="@drawable/ic_home"
-            android:title="Message" />
+            android:id="@+id/nav_news_home"
+            android:icon="@drawable/ic_news"
+            android:title="News" />
         <item
-            android:id="@+id/nav_chat_home"
-            android:icon="@drawable/ic_home"
+            android:id="@+id/nav_contact_home"
+            android:icon="@drawable/ic_chat"
             android:title="Chat" />
         <item
             android:id="@+id/nav_profile_home"
@@ -24,11 +24,11 @@
         <menu>
             <item
                 android:id="@+id/nav_share_home"
-                android:icon="@drawable/ic_home"
+                android:icon="@drawable/ic_share"
                 android:title="Share" />
             <item
                 android:id="@+id/nav_send_home"
-                android:icon="@drawable/ic_home"
+                android:icon="@drawable/ic_send"
                 android:title="Send" />
         </menu>
     </item>

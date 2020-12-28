@@ -83,11 +83,11 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case R.id.nav_message_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomeFragmentContact()).commit();
+                        new HomeFragmentNews()).commit();
                 break;
             case R.id.nav_chat_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomeFragmentNews()).commit();
+                        new HomeFragmentContact()).commit();
                 break;
             case R.id.nav_profile_home:
                 Toast.makeText(MainActivity.this,"prrrr",Toast.LENGTH_SHORT).show();
