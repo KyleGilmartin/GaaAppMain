@@ -7,6 +7,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -25,16 +26,19 @@ import java.util.Map;
 
 public class Register extends AppCompatActivity {
     EditText fullName,email,password,phone;
-    Button registerBtn,goToLogin;
+    TextView goToLogin;
+    Button registerBtn;
     boolean valid = true;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
     CheckBox isTeacherBox,isStudentBox;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         fAuth  = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
@@ -141,8 +145,5 @@ public class Register extends AppCompatActivity {
         return valid;
     }
 
-    public void gotoHome(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
-    }
+
 }
