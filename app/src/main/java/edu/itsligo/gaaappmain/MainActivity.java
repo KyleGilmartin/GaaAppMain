@@ -6,6 +6,7 @@ import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -21,10 +22,14 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 
+import java.text.DateFormat;
+import java.util.Calendar;
+
 import edu.itsligo.gaaappmain.Settings.Settings;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -39,6 +44,10 @@ public class MainActivity extends AppCompatActivity {
 //                finish();
 //            }
 //        });
+
+
+
+
   Toolbar toolbar = findViewById(R.id.toolbar);
    setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);

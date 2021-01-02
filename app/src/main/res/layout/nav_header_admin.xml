@@ -1,32 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-
-    android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="176dp"
+    android:background="@color/purple_200"
     android:gravity="bottom"
-    android:background="@color/colorAccent"
+    android:orientation="vertical"
     android:padding="16dp"
     android:theme="@style/ThemeOverlay.AppCompat.Dark">
-
-    <ImageButton
+    <ImageView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@mipmap/ic_launcher_round"/>
-
+        android:src="@drawable/ic_profile_face" />
+    <TextView
+        android:id="@+id/homeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="Date"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
     <TextView
         android:id="@+id/usernamePlacehold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:paddingTop="8dp"
-        android:text="PaceHolder"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
-    <TextView
-        android:id="@+id/emailPlacehold"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Email@placeholder" />
-
-
+        android:text="Gaa App" />
 </LinearLayout>
+

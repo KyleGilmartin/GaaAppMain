@@ -4,7 +4,35 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/purple_200</item>
         <item name="colorPrimaryDark">@color/purple_500</item>
-        <item name="colorAccent">@color/purple_700</item>
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="backgroundColor1">#fcfcfc</item>
+        <item name="cardBackgroundColor">#ffffff</item>
+        <item name="textColor">#000000</item>
+        <item name="tintcolor">#ffffff</item>
+        <item name="buttoncolor">@color/colorPrimary</item>
+
+    </style>
+
+    <style name="DarkMode" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">#212121</item>
+        <item name="colorPrimaryVariant">#000000</item>
+        <item name="colorOnPrimary">@color/black</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_200</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+
+        <!-- Customize your theme here. -->
+        <item name="colorAccent">@color/accent_color</item>
+        <item name="backgroundColor1">#303030</item>
+        <item name="cardBackgroundColor">#424242</item>
+        <item name="textColor">#ffffff</item>
+        <item name="tintcolor">#ffffff</item>
+        <item name="buttoncolor">@color/colorPrimary</item>
+
+
     </style>
 
     <style name="AppTheme.NoActionBar">
