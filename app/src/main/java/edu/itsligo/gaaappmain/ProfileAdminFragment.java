@@ -18,6 +18,7 @@ import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.model.MarkerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
@@ -50,10 +51,11 @@ public class ProfileAdminFragment extends Fragment {
         userlocation = v.findViewById(R.id.tv_location);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            getLocation();
+         //   getLocation();
         } else {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
         }
+
 
         uName = v.findViewById(R.id.profileFullName);
         uEmail = v.findViewById(R.id.profileEmail);
@@ -70,39 +72,35 @@ public class ProfileAdminFragment extends Fragment {
                 }
             }
         });
-
+       getLocation();
         return v;
     }
 
     private void getLocation() {
-        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
-            // TODO: Consider calling
-            //    ActivityCompat#requestPermissions
-            // here to request the missing permissions, and then overriding
-            //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
-            //                                          int[] grantResults)
-            // to handle the case where the user grants the permission. See the documentation
-            // for ActivityCompat#requestPermissions for more details.
-            return;
-        }
-        fusedLocationProviderClient.getLastLocation().addOnCompleteListener(new OnCompleteListener<Location>() {
-            @Override
-            public void onComplete(@NonNull Task<Location> task) {
-                Location location = task.getResult();
-                if (location != null) {
+        if(MainActivity.new_location!=null) {
+            try {
+                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                List<Address> addresses = geocoder.getFromLocation(
+                        MainActivity.new_location.getLatitude(), MainActivity.new_location.getLongitude(), 1
+                );
+                userlocation.setText(addresses.get(0).getAddressLine(0));
 
-                    try {
-                        Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
-                        List<Address> addresses = geocoder.getFromLocation(
-                                location.getLatitude(), location.getLongitude(), 1
-                        );
-                        userlocation.setText(addresses.get(0).getAddressLine(0));
-
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
+            } catch (IOException e) {
+                e.printStackTrace();
             }
-        });
+        }
+        else
+        {
+            try {
+                Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
+                List<Address> addresses = geocoder.getFromLocation(
+                        MainActivity.last_location.getLatitude(), MainActivity.last_location.getLongitude(), 1
+                );
+                userlocation.setText(addresses.get(0).getAddressLine(0));
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
     }
 }

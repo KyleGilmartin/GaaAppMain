@@ -123,6 +123,12 @@ public class User extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), Login.class));
         finish();
     }
+
+    public void doLogoutAdmin(View view) {
+        FirebaseAuth.getInstance().signOut();
+        startActivity(new Intent(getApplicationContext(), Login.class));
+        finish();
+    }
     // logout button profile fragment
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();

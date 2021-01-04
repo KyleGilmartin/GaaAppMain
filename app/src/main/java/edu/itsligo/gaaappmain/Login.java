@@ -1,5 +1,6 @@
 package edu.itsligo.gaaappmain;
 
+import android.annotation.SuppressLint;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
@@ -62,18 +63,21 @@ public class Login extends AppCompatActivity {
                 checkField(email);
                 checkField(password);
                 Log.d("TAG","onClick" + email.getText().toString()); // console.log
-
+                Log.d("TAG","onClick" + password.getText().toString()); // console.log
                 if(valid){
                     fAuth.signInWithEmailAndPassword(email.getText().toString(),password.getText().toString()).addOnSuccessListener(new OnSuccessListener<AuthResult>() {
                         @Override
                         public void onSuccess(AuthResult authResult) {
-                            Toast.makeText(Login.this,"Loggedin Successfilly",Toast.LENGTH_SHORT).toString();
+                            Toast.makeText(Login.this,"Loggedin Successfilly",Toast.LENGTH_SHORT).show();
                             checkUserAccessLevel(authResult.getUser().getUid());
                         }
                     }).addOnFailureListener(new OnFailureListener() {
+                        @SuppressLint("ShowToast")
                         @Override
                         public void onFailure(@NonNull Exception e) {
-                            Toast.makeText(Login.this,e.getMessage(),Toast.LENGTH_SHORT).toString();
+                            Toast.makeText(getApplicationContext(),e.getMessage(),Toast.LENGTH_SHORT).show();
+
+                            Log.d("TAG",e.getMessage()); // console.log
                         }
                     });
                 }
@@ -185,30 +189,7 @@ public class Login extends AppCompatActivity {
     protected void onStart() {
         super.onStart();
         // logins in pervius user
-        if(FirebaseAuth.getInstance().getCurrentUser() !=null){
-            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-                @Override
-                public void onSuccess(DocumentSnapshot documentSnapshot) {
-                    if(documentSnapshot.getString("isTeacher")!= null){
-                        startActivity(new Intent(getApplicationContext(),Admin.class));
-                        finish();
-                    }
 
-                    if(documentSnapshot.getString("isStudent")!= null){
-                        startActivity(new Intent(getApplicationContext(),User.class));
-                        finish();
-                    }
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception e) {
-                    FirebaseAuth.getInstance().signOut();
-                    startActivity(new Intent(getApplicationContext(),Login.class));
-                    finish();
-                }
-            });
-        }
     }
 
 
