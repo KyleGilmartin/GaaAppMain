@@ -47,21 +47,21 @@ public class Admin extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
 
-        // firebase info to header
-        DocumentReference docRef = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
-//
-                    View headerView = navigationView.getHeaderView(0);
-                    username = (TextView) headerView.findViewById(R.id.usernamePlacehold);
-                    username.setText(documentSnapshot.getString("FullName"));
-                    email = (TextView) headerView.findViewById(R.id.emailPlacehold);
-                    email.setText(documentSnapshot.getString("UserEmail"));
-                }
-            }
-        });
+//        // firebase info to header
+//        DocumentReference docRef = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
+//        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                if(documentSnapshot.exists()){
+////
+//                    View headerView = navigationView.getHeaderView(0);
+//                    username = (TextView) headerView.findViewById(R.id.usernamePlacehold);
+//                    username.setText(documentSnapshot.getString("FullName"));
+//                    email = (TextView) headerView.findViewById(R.id.emailPlacehold);
+//                    email.setText(documentSnapshot.getString("UserEmail"));
+//                }
+//            }
+//        });
 
 
 
@@ -79,7 +79,7 @@ public class Admin extends AppCompatActivity {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()){
-                    case R.id.nav_Account:
+                    case R.id.nav_Account_admin:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new ProfileAdminFragment()).commit();
                         break;

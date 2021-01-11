@@ -83,7 +83,7 @@ public class ProfileAdminFragment extends Fragment {
                 List<Address> addresses = geocoder.getFromLocation(
                         MainActivity.new_location.getLatitude(), MainActivity.new_location.getLongitude(), 1
                 );
-                userlocation.setText(addresses.get(0).getAddressLine(0));
+                userlocation.setText(addresses.get(0).getCountryName());
 
             } catch (IOException e) {
                 e.printStackTrace();
@@ -96,7 +96,7 @@ public class ProfileAdminFragment extends Fragment {
                 List<Address> addresses = geocoder.getFromLocation(
                         MainActivity.last_location.getLatitude(), MainActivity.last_location.getLongitude(), 1
                 );
-                userlocation.setText(addresses.get(0).getAddressLine(0));
+                userlocation.setText(addresses.get(0).getCountryName());
 
             } catch (IOException e) {
                 e.printStackTrace();

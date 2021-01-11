@@ -55,7 +55,7 @@ public class User extends AppCompatActivity {
             public void onSuccess(DocumentSnapshot documentSnapshot) {
                 if(documentSnapshot.exists()){
 //
-                    NavigationView navigationView = findViewById(R.id.nav_view);
+                    NavigationView navigationView = findViewById(R.id.nav_view_user);
                     View headerView = navigationView.getHeaderView(0);
                     username = (TextView) headerView.findViewById(R.id.usernamePlacehold);
                     username.setText(documentSnapshot.getString("FullName"));
