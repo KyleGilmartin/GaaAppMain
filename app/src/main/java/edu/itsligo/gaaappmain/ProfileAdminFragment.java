@@ -1,15 +1,24 @@
 package edu.itsligo.gaaappmain;
 
 import android.Manifest;
+import android.app.Activity;
+import android.app.Notification;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Address;
 import android.location.Geocoder;
 import android.location.Location;
+import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.MediaController;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -37,6 +46,8 @@ public class ProfileAdminFragment extends Fragment {
     TextView uName, uEmail, uPhone;
     FusedLocationProviderClient fusedLocationProviderClient;
     TextView userlocation;
+    Button adminImage;
+
 
     @Nullable
     @Override
@@ -48,10 +59,11 @@ public class ProfileAdminFragment extends Fragment {
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
 
+
         userlocation = v.findViewById(R.id.tv_location);
         fusedLocationProviderClient = LocationServices.getFusedLocationProviderClient(getContext());
         if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-         //   getLocation();
+            //   getLocation();
         } else {
             ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 44);
         }
@@ -72,12 +84,45 @@ public class ProfileAdminFragment extends Fragment {
                 }
             }
         });
-       getLocation();
+        getLocation();
+        // profile image
+        adminImage = v.findViewById(R.id.AdminProfilePicture);
+        adminImage.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getActivity(), "Long hold to change image", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+        adminImage.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+                startActivityForResult(openGallery, 1000);
+                return false;
+            }
+        });
+
+
         return v;
+
     }
 
+// override for profile image
+//    public void onActivityResult(int requestCode, int resultCode, @androidx.annotation.NonNull Intent data) {
+//        super.onActivityResult(requestCode,requestCode,data);
+//        if(requestCode == 1000){
+//            if(resultCode == Activity.RESULT_OK){
+//                Uri imageUri = data.getData();
+//                adminImage.setImageURI(imageUri);
+//            }
+//        }
+//    }
+
+
     private void getLocation() {
-        if(MainActivity.new_location!=null) {
+        if (MainActivity.new_location != null) {
             try {
                 Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                 List<Address> addresses = geocoder.getFromLocation(
@@ -88,9 +133,7 @@ public class ProfileAdminFragment extends Fragment {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
-        else
-        {
+        } else {
             try {
                 Geocoder geocoder = new Geocoder(getContext(), Locale.getDefault());
                 List<Address> addresses = geocoder.getFromLocation(

@@ -1,10 +1,13 @@
 package edu.itsligo.gaaappmain;
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
@@ -27,7 +30,8 @@ public class Admin extends AppCompatActivity {
 // firebase is used
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    TextView email,username;
+    // profile user image
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,25 +51,6 @@ public class Admin extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
 
-//        // firebase info to header
-//        DocumentReference docRef = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
-//        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-//            @Override
-//            public void onSuccess(DocumentSnapshot documentSnapshot) {
-//                if(documentSnapshot.exists()){
-////
-//                    View headerView = navigationView.getHeaderView(0);
-//                    username = (TextView) headerView.findViewById(R.id.usernamePlacehold);
-//                    username.setText(documentSnapshot.getString("FullName"));
-//                    email = (TextView) headerView.findViewById(R.id.emailPlacehold);
-//                    email.setText(documentSnapshot.getString("UserEmail"));
-//                }
-//            }
-//        });
-
-
-
-//
 
 
 

@@ -21,7 +21,9 @@
             android:layout_marginTop="20dp"
             android:background="@drawable/circle_border">
 
+
             <ImageView
+                android:id="@+id/AdminProfilePicture"
                 android:layout_width="120dp"
                 android:layout_height="120dp"
                 android:layout_margin="9dp"
@@ -29,9 +31,12 @@
                 android:background="@drawable/circle"
                 android:padding="3dp"
                 android:scaleType="centerInside"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/ic_user"
+            android:clickable="true" />
 
         </RelativeLayout>
+
+
 
         <TextView
             android:id="@+id/profileFullName"
@@ -57,6 +62,8 @@
             android:textAllCaps="true"
             android:textColor="@color/address"
             android:textSize="14sp" />
+
+
 
     </RelativeLayout>
 
@@ -211,6 +218,8 @@
                 android:onClick="doLogoutAdmin"
                 android:background="@drawable/button_background"
                 android:text="Logout" />
+
+
         </LinearLayout>
 
 
