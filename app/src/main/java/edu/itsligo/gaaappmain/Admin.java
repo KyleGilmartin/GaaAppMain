@@ -1,8 +1,12 @@
 package edu.itsligo.gaaappmain;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.storage.StorageManager;
+import android.provider.MediaStore;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -10,27 +14,31 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
-
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
 
 public class Admin extends AppCompatActivity {
     private DrawerLayout draw;
-// firebase is used
+    // firebase is used
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-    // profile user image
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,9 +48,6 @@ public class Admin extends AppCompatActivity {
         setSupportActionBar(toolbar);
 
 
-
-        fAuth = FirebaseAuth.getInstance();
-        fStore = FirebaseFirestore.getInstance();
         /*
         email = (TextView) findViewById(R.id.emailPlacehold);
         username = (TextView) findViewById(R.id.usernamePlacehold);*/
@@ -51,44 +56,40 @@ public class Admin extends AppCompatActivity {
         View headerView = navigationView.getHeaderView(0);
 
 
-
-
-
         draw = findViewById(R.id.drawer_layout);
         // framnet for profile
         //  NavigationView navigationView = findViewById(R.id.nav_view);
 
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_Account_admin:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new ProfileAdminFragment()).commit();
                         break;
-                    case  R.id.nav_Games:
+                    case R.id.nav_Games:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new GamesAdminFragment()).commit();
 
                         break;
-                    case  R.id.nav_Users:
+                    case R.id.nav_Users:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new AllUsersAdminFragment()).commit();
 
                         break;
-                    case  R.id.nav_Fixture:
+                    case R.id.nav_Fixture:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new FixturesAdminFragment()).commit();
 
                         break;
 
-                    case  R.id.nav_News:
+                    case R.id.nav_News:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new NewsAdminFragment()).commit();
                         break;
-                    case  R.id.nav_Contact:
+                    case R.id.nav_Contact:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new ContactAdminFragment()).commit();
 
@@ -106,14 +107,12 @@ public class Admin extends AppCompatActivity {
         draw.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new ProfileFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_Account);
         }
     }
-
-
 
 
     @Override
@@ -126,17 +125,11 @@ public class Admin extends AppCompatActivity {
     }
 
 
-
-
-
     public void logoutAdmin(View view) {
         FirebaseAuth.getInstance().signOut();
-        startActivity(new Intent(getApplicationContext(),Login.class));
+        startActivity(new Intent(getApplicationContext(), Login.class));
         finish();
     }
-
-
-
 
 
     public void setTraining(View view) {
@@ -149,6 +142,7 @@ public class Admin extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), MainActivity.class));
         finish();
     }
+
 
 
 }
