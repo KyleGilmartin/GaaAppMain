@@ -112,7 +112,7 @@ public class HomeFragmentNews extends Fragment {
 
         public void setImage(Context ctx, String image) {
             ImageView post_image = (ImageView) mview.findViewById(R.id.media_image);
-            Picasso.with(ctx).load(image).into(post_image);
+            Picasso.get().load(image).into(post_image);
         }
     }
 }
