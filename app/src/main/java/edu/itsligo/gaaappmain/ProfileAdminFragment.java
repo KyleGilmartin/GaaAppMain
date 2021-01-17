@@ -17,6 +17,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.MediaController;
 import android.widget.TextView;
@@ -47,6 +48,8 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Locale;
 
+import edu.itsligo.gaaappmain.Settings.EditAdminProfile;
+
 public class ProfileAdminFragment extends Fragment  {
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
@@ -55,6 +58,7 @@ public class ProfileAdminFragment extends Fragment  {
     TextView userlocation;
     ImageView adminImage;
     StorageReference storageReference;
+    ImageButton AdminEditPro;
 
 
     @Nullable
@@ -66,6 +70,7 @@ public class ProfileAdminFragment extends Fragment  {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
+        AdminEditPro = v.findViewById(R.id.btAdminEditProfile);
 
         // admin profile picture on click
         adminImage = v.findViewById(R.id.AdminProfilePicture);
@@ -84,6 +89,17 @@ public class ProfileAdminFragment extends Fragment  {
                 Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGallery, 1000);
                 return false;
+            }
+        });
+
+        AdminEditPro.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i  = new Intent(getContext(), EditAdminProfile.class);
+                i.putExtra("FullName",uName.getText().toString());
+                i.putExtra("UserEmail",uEmail.getText().toString());
+                i.putExtra("UserPhone",uPhone.getText().toString());
+                startActivity(i);
             }
         });
 
