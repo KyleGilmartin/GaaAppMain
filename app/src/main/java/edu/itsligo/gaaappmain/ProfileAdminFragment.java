@@ -71,17 +71,22 @@ public class ProfileAdminFragment extends Fragment  {
         adminImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(getActivity(), "Long click to change image", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getContext(), "Long click to change image", Toast.LENGTH_SHORT).show();
+//
             }
         });
 
-        adminImage.setOnClickListener(new View.OnClickListener() {
+
+        adminImage.setOnLongClickListener(new View.OnLongClickListener() {
             @Override
-            public void onClick(View view) {
+            public boolean onLongClick(View view) {
                 Intent openGallery = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
                 startActivityForResult(openGallery, 1000);
+                return false;
             }
         });
+
+
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();

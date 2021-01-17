@@ -14,15 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Settings.Settings" android:parentActivityName=".MainActivity"></activity>
+        <activity android:name=".LiveChat.AdminChat"></activity>
+        <activity
+            android:name=".Settings.Settings"
+            android:parentActivityName=".MainActivity" />
         <activity
             android:name=".User"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Admin"
             android:theme="@style/AppTheme.NoActionBar" />
-        <activity android:name=".Login" android:parentActivityName=".MainActivity" />
-        <activity android:name=".Register"  android:parentActivityName=".Login"/>
+        <activity
+            android:name=".Login"
+            android:parentActivityName=".MainActivity" />
+        <activity
+            android:name=".Register"
+            android:parentActivityName=".Login" />
         <activity
             android:name=".MainActivity"
             android:theme="@style/AppTheme.NoActionBar">
