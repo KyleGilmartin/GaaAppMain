@@ -22,7 +22,7 @@ public class HomeFragmentContact extends Fragment {
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.homefagment_contact, container, false);
-//        mEditTextTo = v.findViewById(R.id.edit_text_to);
+//       mEditTextTo = v.findViewById(R.id.edit_text_to);
         mEditTextTo = ("project300year3@gmail.com");
         mEditTextSubject = v.findViewById(R.id.edit_text_subject);
         mEditTextMessage = v.findViewById(R.id.edit_text_message);

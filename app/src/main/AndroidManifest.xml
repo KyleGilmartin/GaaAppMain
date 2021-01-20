@@ -15,7 +15,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Settings.EditAdminProfile"></activity>
-        <activity android:name=".LiveChat.AdminChat" />
+
         <activity
             android:name=".Settings.Settings"
             android:parentActivityName=".MainActivity" />

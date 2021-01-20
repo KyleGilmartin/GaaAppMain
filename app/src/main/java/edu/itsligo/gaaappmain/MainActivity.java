@@ -1,16 +1,13 @@
 package edu.itsligo.gaaappmain;
 
 import android.Manifest;
-import android.content.DialogInterface;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -19,27 +16,23 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.app.ActivityCompat;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.Fragment;
 
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.button.MaterialButton;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import edu.itsligo.gaaappmain.Settings.HomeFragmentMap;
 import edu.itsligo.gaaappmain.Settings.Settings;
 
 public class MainActivity extends AppCompatActivity {
@@ -54,16 +47,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-//        Button logout = findViewById(R.id.logoutBtn);
-//        FloatingActionButton login = findViewById(R.id.floatingActionButton);
-//        login.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                FirebaseAuth.getInstance().signOut();
-//                startActivity(new Intent(getApplicationContext(), Login.class));
-//                finish();
-//            }
-//        });
+
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
         drawer = findViewById(R.id.drawer_layout);
@@ -99,10 +83,9 @@ public class MainActivity extends AppCompatActivity {
         //isLocationEnabled();
 
 
-
-
     }
-    LocationListener locationListenerGPS=new LocationListener() {
+
+    LocationListener locationListenerGPS = new LocationListener() {
         @Override
         public void onLocationChanged(android.location.Location location) {
             new_location = location;
@@ -134,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.settings:
                 Intent intent = new Intent(MainActivity.this, Settings.class);
                 startActivity(intent);
@@ -156,6 +139,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_contact_home:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomeFragmentContact()).commit();
+                break;
+            case R.id.nav_profile_map:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomeFragmentMap()).commit();
                 break;
             case R.id.nav_profile_home:
                 login();
@@ -195,38 +182,36 @@ public class MainActivity extends AppCompatActivity {
 //                }
 //            };
 
-void login()
-{
-    if(FirebaseAuth.getInstance().getCurrentUser() !=null){
-        DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
-        df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.getString("isTeacher")!= null){
-                    startActivity(new Intent(getApplicationContext(),Admin.class));
-                    finish();
-                }
+    void login() {
+        if (FirebaseAuth.getInstance().getCurrentUser() != null) {
+            DocumentReference df = FirebaseFirestore.getInstance().collection("Users").document(FirebaseAuth.getInstance().getCurrentUser().getUid());
+            df.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                @Override
+                public void onSuccess(DocumentSnapshot documentSnapshot) {
+                    if (documentSnapshot.getString("isTeacher") != null) {
+                        startActivity(new Intent(getApplicationContext(), Admin.class));
+                        finish();
+                    }
 
-                if(documentSnapshot.getString("isStudent")!= null){
-                    startActivity(new Intent(getApplicationContext(), edu.itsligo.gaaappmain.User.class));
+                    if (documentSnapshot.getString("isStudent") != null) {
+                        startActivity(new Intent(getApplicationContext(), edu.itsligo.gaaappmain.User.class));
+                        finish();
+                    }
+                }
+            }).addOnFailureListener(new OnFailureListener() {
+                @Override
+                public void onFailure(@NonNull Exception e) {
+                    FirebaseAuth.getInstance().signOut();
+                    startActivity(new Intent(getApplicationContext(), Login.class));
                     finish();
                 }
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception e) {
-                FirebaseAuth.getInstance().signOut();
-                startActivity(new Intent(getApplicationContext(),Login.class));
-                finish();
-            }
-        });
+            });
+        } else {
+            Intent intent = new Intent(MainActivity.this, Login.class);
+            startActivity(intent);
+        }
     }
-    else
-    {
-        Intent intent = new Intent(MainActivity.this,Login.class);
-        startActivity(intent);
-    }
-}
+
     @Override
     public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
         switch (requestCode) {
@@ -235,7 +220,7 @@ void login()
                 if (grantResults[0] == PackageManager.PERMISSION_DENIED) {
                     // permission was denied, show alert to explain permission
                     showPermissionAlert();
-                }else{
+                } else {
                     //permission is granted now start a background service
                     if (ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                             && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
@@ -246,7 +231,7 @@ void login()
         }
     }
 
-    private void showPermissionAlert(){
+    private void showPermissionAlert() {
         if (ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(MainActivity.this, Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_COARSE_LOCATION, Manifest.permission.ACCESS_FINE_LOCATION}, 123);
@@ -276,13 +261,12 @@ void login()
                         // Got last known location. In some rare situations this can be null.
                         if (location != null) {
                             // Logic to handle location object
-                           last_location = location;
+                            last_location = location;
                         }
                     }
                 });
 
     }
-
 
 
     public void DoLogin(View view) {
