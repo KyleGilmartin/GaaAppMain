@@ -40,14 +40,6 @@ public class HomeFragmentNews extends Fragment {
         loadingDialog.startLoadingDialog();
 
 
-//        Handler handler = new Handler();
-//        handler.postDelayed(new Runnable() {
-//            @Override
-//            public void run() {
-//                loadingDialog.dismissDialog();
-//            }
-//        }, 4000);
-
         ref = FirebaseDatabase.getInstance().getReference().child("NewTable");
         ref.keepSynced(true);
         ref.addValueEventListener(new ValueEventListener() {

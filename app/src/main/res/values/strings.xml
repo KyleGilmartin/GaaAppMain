@@ -1,4 +1,4 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
     <string name="app_name">UserRoles</string>
     <string name="title_activity_profile_acc">ProfileAcc</string>
     <string name="navigation_drawer_open">Open navigation drawer</string>
@@ -8,6 +8,9 @@
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
 
+
+
+
     <string name="recent_news">Welcome</string>
     <string name="in_news">Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry</string>
     <string name="publish_date">12-12-2020</string>
@@ -15,7 +18,7 @@
     <string name="menu_home">Home</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
-    <!-- TODO: Remove or change this placeholder text -->
+
     <string name="hello_blank_fragment">Hello blank fragment</string>
 
     <string name="supporting">Greyhound divisively hello coldly wonderfully marginally far upon excluding.</string>
@@ -32,4 +35,24 @@
     <string name="progress_dialog_message">Connecting, please wait...</string>
 
 
+
+<!-- Admin fixture page -->
+    <string-array name="Teams">
+        <item>Sligo</item>
+        <item>Mayo</item>
+        <item>Leitrim</item>
+        <item>Roscommon</item>
+        <item>Galway</item>
+    </string-array>
+
+    <string-array name="Venue">
+        <item>Home</item>
+        <item>Away</item>
+
+    </string-array>
+
+
 </resources>
+
+
+
