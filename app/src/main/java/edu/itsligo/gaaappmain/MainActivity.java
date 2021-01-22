@@ -32,6 +32,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import edu.itsligo.gaaappmain.Games.HomeGamesStats;
 import edu.itsligo.gaaappmain.Lotto.HomeFragmentLotto;
 import edu.itsligo.gaaappmain.Settings.HomeFragmentMap;
 import edu.itsligo.gaaappmain.Settings.Settings;
@@ -144,6 +145,10 @@ public class MainActivity extends AppCompatActivity {
             case R.id.nav_profile_map:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomeFragmentMap()).commit();
+                break;
+            case R.id.nav_profile_Games:
+                Intent intent = new Intent(this, HomeGamesStats.class);
+                startActivity(intent);
                 break;
             case R.id.nav_profile_Lotto:
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
