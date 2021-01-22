@@ -1,16 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/nav_home"
+        android:id="@+id/nav_Home_Fixture"
         android:icon="@drawable/ic_home"
-        android:title="Home"/>
+        android:title="Fixtures"/>
     <item
-        android:id="@+id/nav_news"
+        android:id="@+id/nav_Home_Results"
         android:icon="@drawable/ic_home"
-        android:title="News"/>
-    <item
-        android:id="@+id/nav_homeContact"
-        android:icon="@drawable/ic_home"
-        android:title="Contact US"/>
+        android:title="Results"/>
+
 
 </menu>
