@@ -32,6 +32,8 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import edu.itsligo.gaaappmain.Lotto.AdminFragmentLotto;
+
 
 public class Admin extends AppCompatActivity {
     private DrawerLayout draw;
@@ -88,6 +90,10 @@ public class Admin extends AppCompatActivity {
                     case R.id.nav_News:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new NewsAdminFragment()).commit();
+                        break;
+                    case R.id.nav_Lotto:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new AdminFragmentLotto()).commit();
                         break;
                     case R.id.nav_Contact:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
