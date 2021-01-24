@@ -11,8 +11,12 @@
     <TextView
         android:id="@+id/tvUpcomingFixtures"
         android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:text="Upcoming Fixtures "
+        android:layout_height="56dp"
+        android:text="Up Coming Games"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:layout_marginTop="30dp"
+        android:textSize="40dp"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
     <androidx.recyclerview.widget.RecyclerView
