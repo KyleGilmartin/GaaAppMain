@@ -15,11 +15,11 @@
         android:text="Upcoming Fixtures "
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listView"
         android:layout_width="match_parent"
         android:layout_height="638dp">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 
 </LinearLayout>

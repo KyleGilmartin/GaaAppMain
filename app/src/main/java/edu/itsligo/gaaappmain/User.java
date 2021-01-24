@@ -69,7 +69,7 @@ public class User extends AppCompatActivity {
 
         draw = findViewById(R.id.drawer_layout);
         // framnet for profile
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationView navigationView = findViewById(R.id.nav_view_user);
 
 
 

@@ -141,7 +141,7 @@ public class ProfileAdminFragment extends Fragment  {
                 }
             }
         });
-        getLocation();
+//        getLocation();
 
         // profile image
 

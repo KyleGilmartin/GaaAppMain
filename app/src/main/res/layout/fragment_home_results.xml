@@ -20,10 +20,10 @@
         android:textStyle="bold"
         android:textAppearance="@style/TextAppearance.AppCompat.Large" />
 
-    <ListView
+    <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/listView"
         android:layout_width="401dp"
         android:layout_height="638dp">
 
-    </ListView>
+    </androidx.recyclerview.widget.RecyclerView>
 </LinearLayout>
