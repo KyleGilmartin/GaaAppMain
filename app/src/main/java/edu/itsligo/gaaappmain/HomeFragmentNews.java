@@ -4,6 +4,7 @@ package edu.itsligo.gaaappmain;
 import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
+import android.text.method.LinkMovementMethod;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -84,6 +85,7 @@ public class HomeFragmentNews extends Fragment {
                 newsViewHolder.settitle(news.getTitle());
                 newsViewHolder.setDesc(news.getDesc());
                 newsViewHolder.setImage(getContext(), news.getImageURL());
+                newsViewHolder.setLink(news.getLink());
 
 
                 newsViewHolder.imgExpand.setOnClickListener(new View.OnClickListener() {
@@ -108,13 +110,21 @@ public class HomeFragmentNews extends Fragment {
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
         View mview;
         TextView desc;
+        TextView link;
         ImageButton imgExpand;
+
 
         public NewsViewHolder(View itemView) {
             super(itemView);
             mview = itemView;
             desc = (TextView) mview.findViewById(R.id.supporting_text);
             imgExpand = mview.findViewById(R.id.expand_button);
+            link = mview.findViewById(R.id.NewsLink);
+        }
+
+        public  void setLink(String link){
+            TextView post_link = (TextView) mview.findViewById(R.id.NewsLink);
+            post_link.setText(link);
         }
 
         public void settitle(String title) {

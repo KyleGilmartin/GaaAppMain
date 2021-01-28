@@ -36,6 +36,7 @@ import edu.itsligo.gaaappmain.Games.HomeGamesStats;
 import edu.itsligo.gaaappmain.Lotto.HomeFragmentLotto;
 import edu.itsligo.gaaappmain.Settings.HomeFragmentMap;
 import edu.itsligo.gaaappmain.Settings.Settings;
+import edu.itsligo.gaaappmain.map.MapsActivity;
 
 public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawer;
@@ -143,8 +144,8 @@ public class MainActivity extends AppCompatActivity {
                         new HomeFragmentContact()).commit();
                 break;
             case R.id.nav_profile_map:
-                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                        new HomeFragmentMap()).commit();
+               Intent map = new Intent(this, MapsActivity.class);
+               startActivity(map);
                 break;
             case R.id.nav_profile_Games:
                 Intent intent = new Intent(this, HomeGamesStats.class);

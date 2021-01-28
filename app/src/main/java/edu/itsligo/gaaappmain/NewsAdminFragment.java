@@ -38,7 +38,7 @@ public class NewsAdminFragment extends Fragment {
     private static final int RESULT_LOAD_IMAGE = 1;
 
     // test comit
-    EditText ntitle, ndescription;
+    EditText ntitle, ndescription, nLink;
     FirebaseDatabase database;
     DatabaseReference ref;
     Button insert, mBtnUploadImage;
@@ -66,6 +66,7 @@ public class NewsAdminFragment extends Fragment {
         mFirebaseStorage = FirebaseStorage.getInstance();
         mStorageReference = mFirebaseStorage.getReference();
 
+        nLink = v.findViewById(R.id.etNewsLink);
         ntitle = v.findViewById(R.id.etNewsTitle);
         ndescription = v.findViewById(R.id.etNewsDescription);
         database = FirebaseDatabase.getInstance();
@@ -94,6 +95,7 @@ public class NewsAdminFragment extends Fragment {
                     //getting title, description
                     String etitle = ntitle.getText().toString();
                     String edesc = ndescription.getText().toString();
+                    String elink = nLink.getText().toString();
 
                     final StorageReference fileToUpload = mStorageReference.child("News").child(UUID.randomUUID().toString()).child(UUID.randomUUID().toString());
                     fileToUpload.putFile(imageUri).addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
@@ -105,6 +107,7 @@ public class NewsAdminFragment extends Fragment {
                                     Uri downloadUri = uri;
                                     newTable.setTitle(etitle);
                                     newTable.setDesc(edesc);
+                                    newTable.setLink(elink);
                                     newTable.setImageURL(downloadUri.toString());
                                     ref.push().setValue(newTable).addOnCompleteListener(new OnCompleteListener<Void>() {
                                         @Override
