@@ -86,6 +86,11 @@ public class Admin extends AppCompatActivity {
                                 new FixturesAdminFragment()).commit();
 
                         break;
+                    case R.id.nav_Gallery:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new AdminFragmentGallery()).commit();
+
+                        break;
 
                     case R.id.nav_News:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
