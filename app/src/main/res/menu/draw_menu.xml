@@ -12,6 +12,10 @@
             android:id="@+id/nav_Games"
             android:icon="@drawable/ic_games"
             android:title="Games" />
+        <item
+            android:id="@+id/nav_UserLotto"
+            android:icon="@drawable/ic_games"
+            android:title="Games" />
 
     </group>
 

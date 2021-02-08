@@ -23,16 +23,80 @@ import edu.itsligo.gaaappmain.R;
 
 public class HomeFragmentLotto extends Fragment {
 
+    TextView tt1,tt2,tt3,tt4,tt5,rdt12;
 
+    TextView firebase_name;
+    FirebaseDatabase database;
+    DatabaseReference databaseReference,reference;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home_lotto, container, false);
+        View v = inflater.inflate(R.layout.fragment_home_lotto, container, false);
 
+        firebase_name=v.findViewById(R.id.nameOfwinner);
+        tt1=v.findViewById(R.id.hometvNumber1);
+        tt2=v.findViewById(R.id.hometvNumber2);
+        tt3=v.findViewById(R.id.hometvNumber3);
+        tt4=v.findViewById(R.id.hometvNumber4);
+        tt5=v.findViewById(R.id.hometvNumber5);
+        show_winner();
 
-
-        return view;
+        return v;
     }
+
+    private void show_winner() {
+        database=FirebaseDatabase.getInstance();
+        reference=databaseReference=database.getReference("lootloWinner");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if(snapshot.exists())
+                {
+                    for (DataSnapshot snapshot1 : snapshot.getChildren()) {
+                        String cop=snapshot1.child("codeOfPerson").getValue(String.class);
+                        String nop=snapshot1.child("nameofPerson").getValue(String.class);
+
+
+                        firebase_name.setText(nop);
+                        Toast.makeText(getContext(), nop, Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getContext(), cop, Toast.LENGTH_SHORT).show();
+
+                        int random_int=Integer.parseInt(cop);
+
+                        int n2 = random_int / 10000 % 10;
+                        int n3 = random_int / 1000 % 10;
+                        int n4 = random_int / 100 % 10;
+                        int n5 = random_int / 10 % 10;
+                        int n6 = random_int % 10;
+
+                        tt1.setText(String.valueOf(n2));
+                        tt2.setText(String.valueOf(n3));
+                        tt3.setText(String.valueOf(n4));
+                        tt4.setText(String.valueOf(n5));
+                        tt5.setText(String.valueOf(n6));
+
+
+                    }
+                }
+                else
+                {
+                    Toast.makeText(getContext(), "No USer Exists", Toast.LENGTH_SHORT).show();
+                    firebase_name.setText("No USer Exists");
+                }
+
+
+
+//
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+                Toast.makeText(getContext(), error.getMessage(), Toast.LENGTH_SHORT).show();
+
+            }
+        });
+    }
+
 
 
 }

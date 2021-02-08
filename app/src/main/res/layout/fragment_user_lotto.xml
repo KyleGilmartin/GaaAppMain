@@ -1,12 +1,11 @@
-<?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/images"
-    tools:context=".Lotto.UserFragmentLotto">
-
+    android:padding="5dp"
+    tools:context=".User">
 
     <TextView
         android:id="@+id/textView8"
@@ -14,7 +13,7 @@
         android:layout_height="wrap_content"
         android:text="Lotto Ticket"
         android:textAlignment="center"
-        android:textColor="@color/black"
+        android:textColor="#FF000000"
         android:textSize="30dp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -22,7 +21,8 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.059" />
+        app:layout_constraintVertical_bias="0.059"
+        android:gravity="center_horizontal" />
 
     <EditText
         android:id="@+id/etUserCardName"
@@ -41,18 +41,17 @@
 
     <EditText
         android:id="@+id/etUserCardPin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="186dp"
+        android:layout_height="41dp"
         android:layout_marginTop="20dp"
+        android:layout_marginEnd="16dp"
         android:ems="10"
         android:hint="Pin"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.424" />
+        app:layout_constraintVertical_bias="0.355" />
 
     <EditText
         android:id="@+id/etUserCardNo"
@@ -67,66 +66,51 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.312" />
+        app:layout_constraintVertical_bias="0.234" />
+
 
     <EditText
         android:id="@+id/etUserCardDate"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="170dp"
+        android:layout_height="50dp"
         android:ems="10"
         android:hint="Date"
         android:inputType="date"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/etUserCardPin"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.441" />
-
-    <EditText
-        android:id="@+id/etUserLottoNumber"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Lotto number"
-        android:inputType="number"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226" />
-
+        app:layout_constraintVertical_bias="0.377" />
 
     <TextView
-        android:id="@+id/tvNumber1"
+        android:id="@+id/usertvNumber1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber2"
+        app:layout_constraintEnd_toStartOf="@+id/usertvNumber2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.556" />
 
     <TextView
-        android:id="@+id/tvNumber3"
+        android:id="@+id/usertvNumber3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber4"
+        app:layout_constraintEnd_toStartOf="@+id/usertvNumber4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber2"
+        app:layout_constraintStart_toEndOf="@+id/usertvNumber2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.556" />
 
     <TextView
-        android:id="@+id/tvNumber5"
+        android:id="@+id/usertvNumber5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
@@ -134,33 +118,33 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber4"
+        app:layout_constraintStart_toEndOf="@+id/usertvNumber4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.556" />
 
     <TextView
-        android:id="@+id/tvNumber4"
+        android:id="@+id/usertvNumber4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber5"
+        app:layout_constraintEnd_toStartOf="@+id/usertvNumber5"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber3"
+        app:layout_constraintStart_toEndOf="@+id/usertvNumber3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.556" />
 
     <TextView
-        android:id="@+id/tvNumber2"
+        android:id="@+id/usertvNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber3"
+        app:layout_constraintEnd_toStartOf="@+id/usertvNumber3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber1"
+        app:layout_constraintStart_toEndOf="@+id/usertvNumber1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.556" />
 
@@ -170,6 +154,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Buy"
+        android:onClick="Buy"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
@@ -183,12 +168,12 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:text="Pick"
+        android:onClick="pick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.656" />
-
 
 </androidx.constraintlayout.widget.ConstraintLayout>

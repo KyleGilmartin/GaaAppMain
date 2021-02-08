@@ -8,10 +8,13 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -32,6 +35,11 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Locale;
+
+import edu.itsligo.gaaappmain.APIFetch.fetchData;
 import edu.itsligo.gaaappmain.Games.HomeGamesStats;
 import edu.itsligo.gaaappmain.Lotto.HomeFragmentLotto;
 import edu.itsligo.gaaappmain.Settings.HomeFragmentMap;
@@ -50,6 +58,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -87,6 +96,7 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 
     LocationListener locationListenerGPS = new LocationListener() {
         @Override
@@ -144,8 +154,8 @@ public class MainActivity extends AppCompatActivity {
                         new HomeFragmentContact()).commit();
                 break;
             case R.id.nav_profile_map:
-               Intent map = new Intent(this, MapsActivity.class);
-               startActivity(map);
+                Intent map = new Intent(this, MapsActivity.class);
+                startActivity(map);
                 break;
             case R.id.nav_profile_Games:
                 Intent intent = new Intent(this, HomeGamesStats.class);

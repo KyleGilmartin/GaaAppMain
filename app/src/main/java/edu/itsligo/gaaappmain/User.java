@@ -20,6 +20,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import edu.itsligo.gaaappmain.Lotto.UserFragmentLotto;
 
 
 public class User extends AppCompatActivity {
@@ -84,6 +85,12 @@ public class User extends AppCompatActivity {
                     case  R.id.nav_Games:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new GamesFragment()).commit();
+
+                        break;
+
+                    case  R.id.nav_UserLotto:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                                new UserFragmentLotto()).commit();
 
                         break;
                     default:

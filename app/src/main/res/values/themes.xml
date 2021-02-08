@@ -10,6 +10,7 @@
         <item name="textColor">#000000</item>
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">@color/colorPrimary</item>
+        <item name="android:windowAnimationStyle">@style/animation</item>
 
     </style>
 
@@ -31,6 +32,7 @@
         <item name="textColor">#ffffff</item>
         <item name="tintcolor">#ffffff</item>
         <item name="buttoncolor">@color/colorPrimary</item>
+        <item name="android:windowAnimationStyle">@style/animation</item>
 
 
     </style>
@@ -39,5 +41,12 @@
         <item name="windowActionBar">false</item>
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
+    </style>
+
+
+    <style name="animation">
+
+        <item name="android:windowEnterAnimation">@android:anim/fade_in</item>
+        <item name="android:windowExitAnimation">@android:anim/fade_out</item>
     </style>
 </resources>

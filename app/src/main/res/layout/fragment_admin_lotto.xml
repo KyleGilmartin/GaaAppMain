@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/images"
-    tools:context=".Lotto.AdminFragmentLotto">
+    tools:context=".lootloApp.admin_lootoo">
 
 
     <TextView
@@ -22,66 +22,66 @@
         app:layout_constraintVertical_bias="0.081" />
 
     <TextView
-        android:id="@+id/tvNumber1"
+        android:id="@+id/admintvNumber1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber2"
+        app:layout_constraintEnd_toStartOf="@+id/admintvNumber2"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.216" />
 
     <TextView
-        android:id="@+id/tvNumber2"
+        android:id="@+id/admintvNumber2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber3"
+        app:layout_constraintEnd_toStartOf="@+id/admintvNumber3"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber1"
+        app:layout_constraintStart_toEndOf="@+id/admintvNumber1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.216"  />
 
     <TextView
-        android:id="@+id/tvNumber3"
+        android:id="@+id/admintvNumber3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber4"
+        app:layout_constraintEnd_toStartOf="@+id/admintvNumber4"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber2"
+        app:layout_constraintStart_toEndOf="@+id/admintvNumber2"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.216"/>
 
     <TextView
-        android:id="@+id/tvNumber4"
+        android:id="@+id/admintvNumber4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
-        app:layout_constraintEnd_toStartOf="@+id/tvNumber5"
+        app:layout_constraintEnd_toStartOf="@+id/admintvNumber5"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber3"
+        app:layout_constraintStart_toEndOf="@+id/admintvNumber3"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.216" />
 
     <TextView
-        android:id="@+id/tvNumber5"
+        android:id="@+id/admintvNumber5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="0"
         android:textSize="36sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/tvNumber4"
+        app:layout_constraintStart_toEndOf="@+id/admintvNumber4"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.216" />
@@ -91,6 +91,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Button"
+        android:onClick="Winner"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
@@ -98,8 +99,9 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.374" />
 
+
     <TextView
-        android:id="@+id/textView13"
+        android:id="@+id/updateUser"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:hint="This text view will say no winner this week or the winners name"
@@ -108,4 +110,5 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

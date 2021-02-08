@@ -2,9 +2,11 @@ package edu.itsligo.gaaappmain;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -24,12 +26,19 @@ import com.squareup.picasso.Picasso;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.Locale;
+
+import edu.itsligo.gaaappmain.APIFetch.fetchData;
 
 public class HomeFragmentHome extends Fragment {
     TextView date;
     private RecyclerView mNewslist;
     private DatabaseReference ref;
+
+    public static TextView mPos1, mPos2, mPos3, mClub1, mClub2, mClub3, mWins1, mWins2, mWins3, mPlayed1, mPlayed2, mPlayed3, mGD1, mGD2, mGD3, mPts1, mPts2, mPts3;
+    Button button;
+    TextView time;
 
     @Nullable
     @Override
@@ -42,11 +51,67 @@ public class HomeFragmentHome extends Fragment {
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
         date.setText(currentDate);
 
-        ref = FirebaseDatabase.getInstance().getReference().child("NewTable");
-        ref.keepSynced(true);
-        mNewslist = v.findViewById(R.id.myrecycleview2);
-        mNewslist.setHasFixedSize(true);
-        mNewslist.setLayoutManager(new LinearLayoutManager(getContext()));
+        // api table
+        // gets time for refreshing api calls
+        time = v.findViewById(R.id.tvTimeCheck);
+
+        mPos1 = v.findViewById(R.id.t1Pos);
+        mClub1 = v.findViewById(R.id.t1Club);
+        mWins1 = v.findViewById(R.id.t1Wins);
+        mGD1 = v.findViewById(R.id.t1GD);
+        mPts1 = v.findViewById(R.id.t1Pts);
+
+        mPos2 = v.findViewById(R.id.t2Pos);
+        mClub2 = v.findViewById(R.id.t2Club);
+        mWins2 = v.findViewById(R.id.t2Wins);
+        mGD2 = v.findViewById(R.id.t2GD);
+        mPts2 = v.findViewById(R.id.t2Pts);
+
+        mPos3 = v.findViewById(R.id.t3Pos);
+        mClub3 = v.findViewById(R.id.t3Club);
+        mWins3 = v.findViewById(R.id.t3Wins);
+        mGD3 = v.findViewById(R.id.t3GD);
+        mPts3 = v.findViewById(R.id.t3Pts);
+
+
+        String currentTime = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(new Date());
+        time.setText("Last Updated "+ currentTime);
+
+
+        fetchData process = new fetchData();
+        process.execute();
+
+
+        Handler handler1 = new Handler();
+        for (int a = 1; a <= 100; a++) {
+            handler1.postDelayed(new Runnable() {
+
+                @Override
+                public void run() {
+
+                    String currentTime = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(new Date());
+                    time.setText("Last Updated "+ currentTime);
+                    fetchData process = new fetchData();
+                    process.execute();
+                }
+            }, 200000 * a);
+        }
+
+
+
+
+        button = v.findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                fetchData process = new fetchData();
+                process.execute();
+            }
+        });
+
+
+        // api end
+
 
 
 
@@ -54,45 +119,45 @@ public class HomeFragmentHome extends Fragment {
         return  v;
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-        FirebaseRecyclerAdapter<News, NewsViewHolder2> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<News, NewsViewHolder2>(News.class, R.layout.news_card_home_layout, NewsViewHolder2.class, ref) {
-            @Override
-            protected void populateViewHolder(NewsViewHolder2 newsViewHolder, News news, int i) {
-                newsViewHolder.setDesc(news.getDesc());
-                newsViewHolder.setImage(getContext(), news.getImageURL());
-
-                Toast.makeText(getContext(), String.valueOf(news), Toast.LENGTH_SHORT).show();
-            }
-
-
-        };
-        mNewslist.setAdapter(firebaseRecyclerAdapter);
-    }
-
-    public static class NewsViewHolder2 extends RecyclerView.ViewHolder {
-        View mview;
-        TextView desc;
-
-
-        public NewsViewHolder2(View itemView) {
-            super(itemView);
-            mview = itemView;
-            desc = (TextView) mview.findViewById(R.id.supporting_text2);
-
-        }
-
-
-
-        public void setDesc(String desc) {
-            TextView post_Desc = (TextView) mview.findViewById(R.id.supporting_text2);
-            post_Desc.setText(desc);
-        }
-
-        public void setImage(Context ctx, String image) {
-            ImageView post_image = (ImageView) mview.findViewById(R.id.media_image2);
-            Picasso.get().load(image).into(post_image);
-        }
-    }
+//    @Override
+//    public void onStart() {
+//        super.onStart();
+//        FirebaseRecyclerAdapter<News, NewsViewHolder2> firebaseRecyclerAdapter = new FirebaseRecyclerAdapter<News, NewsViewHolder2>(News.class, R.layout.news_card_home_layout, NewsViewHolder2.class, ref) {
+//            @Override
+//            protected void populateViewHolder(NewsViewHolder2 newsViewHolder, News news, int i) {
+//                newsViewHolder.setDesc(news.getDesc());
+//                newsViewHolder.setImage(getContext(), news.getImageURL());
+//
+//                Toast.makeText(getContext(), String.valueOf(news), Toast.LENGTH_SHORT).show();
+//            }
+//
+//
+//        };
+//        mNewslist.setAdapter(firebaseRecyclerAdapter);
+//    }
+//
+//    public static class NewsViewHolder2 extends RecyclerView.ViewHolder {
+//        View mview;
+//        TextView desc;
+//
+//
+//        public NewsViewHolder2(View itemView) {
+//            super(itemView);
+//            mview = itemView;
+//            desc = (TextView) mview.findViewById(R.id.supporting_text2);
+//
+//        }
+//
+//
+//
+//        public void setDesc(String desc) {
+//            TextView post_Desc = (TextView) mview.findViewById(R.id.supporting_text2);
+//            post_Desc.setText(desc);
+//        }
+//
+//        public void setImage(Context ctx, String image) {
+//            ImageView post_image = (ImageView) mview.findViewById(R.id.media_image2);
+//            Picasso.get().load(image).into(post_image);
+//        }
+//    }
 }
