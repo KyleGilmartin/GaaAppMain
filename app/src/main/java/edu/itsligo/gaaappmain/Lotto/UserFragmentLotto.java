@@ -20,9 +20,13 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FirebaseFirestore;
 
 import edu.itsligo.gaaappmain.R;
 
@@ -41,6 +45,7 @@ public class UserFragmentLotto extends Fragment {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
     FirebaseAuth fAuth;
+    FirebaseFirestore fStore;
     String mailOfUser;
     Dialog dialog;
 
@@ -55,8 +60,20 @@ public class UserFragmentLotto extends Fragment {
 
 
         //  lotto form validation
-
+        fStore = FirebaseFirestore.getInstance();
         mName = v.findViewById(R.id.etUserCardName);
+
+        DocumentReference docR = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
+        docR.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+            @Override
+            public void onSuccess(DocumentSnapshot documentSnapshot) {
+                if (documentSnapshot.exists()) {
+                    mName.setText(documentSnapshot.getString("FullName"));
+
+                }
+            }
+        });
+
         mCardno = v.findViewById(R.id.etUserCardNo);
         mDate = v.findViewById(R.id.etUserCardDate);
         mPin = v.findViewById(R.id.etUserCardPin);
