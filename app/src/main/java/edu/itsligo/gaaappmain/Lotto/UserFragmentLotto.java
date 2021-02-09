@@ -28,6 +28,7 @@ import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
+import br.com.sapereaude.maskedEditText.MaskedEditText;
 import edu.itsligo.gaaappmain.R;
 
 import static androidx.appcompat.content.res.AppCompatResources.getDrawable;
@@ -36,8 +37,9 @@ import static androidx.appcompat.content.res.AppCompatResources.getDrawable;
 public class UserFragmentLotto extends Fragment {
 
     TextView tt1, tt2, tt3, tt4, tt5, rdt12;
-    EditText mName, mCardno, mDate, mPin;
+    EditText mName, mCardno,  mPin;
     Button buy;
+    MaskedEditText mDate;
 
     int min = 10000;
     int max = 99000;
@@ -75,7 +77,7 @@ public class UserFragmentLotto extends Fragment {
         });
 
         mCardno = v.findViewById(R.id.etUserCardNo);
-        mDate = v.findViewById(R.id.etUserCardDate);
+        mDate =(MaskedEditText) v.findViewById(R.id.etUserCardDate);
         mPin = v.findViewById(R.id.etUserCardPin);
 
 

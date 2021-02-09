@@ -2,6 +2,8 @@ package edu.itsligo.gaaappmain;
 
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.LinkMovementMethod;
@@ -31,6 +33,7 @@ public class HomeFragmentNews extends Fragment {
 
     private RecyclerView mNewslist;
     private DatabaseReference ref;
+    TextView tvNewsLink;
 
 
     @Nullable
@@ -72,9 +75,22 @@ public class HomeFragmentNews extends Fragment {
         mNewslist.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
+        // xml link to news card
+
+//        tvNewsLink = v.findViewById(R.id.NewsLink);
+//        tvNewsLink.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View view) {
+//                Intent intent = new Intent();
+//                intent.setAction(Intent.ACTION_VIEW);
+//                intent.addCategory(Intent.CATEGORY_BROWSABLE);
+//                intent.setData(Uri.parse());
+//                startActivity(intent);
+//            }
+//        });
+
         return v;
     }
-
 
     @Override
     public void onStart() {
@@ -107,6 +123,8 @@ public class HomeFragmentNews extends Fragment {
         mNewslist.setAdapter(firebaseRecyclerAdapter);
     }
 
+
+
     public static class NewsViewHolder extends RecyclerView.ViewHolder {
         View mview;
         TextView desc;
@@ -122,10 +140,14 @@ public class HomeFragmentNews extends Fragment {
             link = mview.findViewById(R.id.NewsLink);
         }
 
-        public  void setLink(String link){
+
+        public void setLink(String link) {
             TextView post_link = (TextView) mview.findViewById(R.id.NewsLink);
             post_link.setText(link);
+
+
         }
+
 
         public void settitle(String title) {
             TextView post_title = (TextView) mview.findViewById(R.id.primary_text);
@@ -143,4 +165,6 @@ public class HomeFragmentNews extends Fragment {
             Picasso.get().load(image).into(post_image);
         }
     }
+
+
 }

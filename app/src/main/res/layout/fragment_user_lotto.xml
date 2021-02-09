@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:mask="http://schemas.android.com/apk/res-auto"
     android:background="@drawable/images"
     android:padding="5dp"
     tools:context=".User">
@@ -68,20 +69,37 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.234" />
 
+<br.com.sapereaude.maskedEditText.MaskedEditText
+    android:id="@+id/etUserCardDate"
+    android:layout_width="170dp"
+    android:layout_height="50dp"
+    android:ems="10"
+    android:hint="Date"
+    app:keep_hint="true"
+    android:inputType="date"
+    app:layout_constraintBottom_toBottomOf="parent"
+    app:layout_constraintEnd_toStartOf="@+id/etUserCardPin"
+    app:layout_constraintHorizontal_bias="0.0"
+    app:layout_constraintStart_toStartOf="parent"
+    app:layout_constraintTop_toTopOf="parent"
+    app:layout_constraintVertical_bias="0.377"
+    mask:mask="##/##"
+    />
 
-    <EditText
-        android:id="@+id/etUserCardDate"
-        android:layout_width="170dp"
-        android:layout_height="50dp"
-        android:ems="10"
-        android:hint="Date"
-        android:inputType="date"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/etUserCardPin"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.377" />
+<!--    <EditText-->
+<!--      -->
+<!--        android:layout_width="170dp"-->
+<!--        android:layout_height="50dp"-->
+<!--        android:ems="10"-->
+<!--        android:hint="Date"-->
+<!--        android:inputType="date"-->
+<!--        app:layout_constraintBottom_toBottomOf="parent"-->
+<!--        app:layout_constraintEnd_toStartOf="@+id/etUserCardPin"-->
+<!--        app:layout_constraintHorizontal_bias="0.0"-->
+<!--        app:layout_constraintStart_toStartOf="parent"-->
+<!--        app:layout_constraintTop_toTopOf="parent"-->
+<!--        app:layout_constraintVertical_bias="0.377"-->
+<!--       />-->
 
     <TextView
         android:id="@+id/usertvNumber1"
