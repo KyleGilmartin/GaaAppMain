@@ -75,12 +75,10 @@ public class HomeFragmentNews extends Fragment {
         mNewslist.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-
-
         return v;
     }
 
-    private void goToUrl (String url) {
+    public void goToUrl(String url) {
         Uri uriUrl = Uri.parse(url);
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
         startActivity(launchBrowser);
@@ -118,8 +116,7 @@ public class HomeFragmentNews extends Fragment {
     }
 
 
-
-    public static class NewsViewHolder extends RecyclerView.ViewHolder {
+    public class NewsViewHolder extends RecyclerView.ViewHolder {
         View mview;
         TextView desc;
         TextView link;
@@ -141,7 +138,7 @@ public class HomeFragmentNews extends Fragment {
             post_link.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    goToUrl (link);
+                    goToUrl(link);
                 }
             });
 
