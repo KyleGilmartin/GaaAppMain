@@ -75,21 +75,15 @@ public class HomeFragmentNews extends Fragment {
         mNewslist.setLayoutManager(new LinearLayoutManager(getContext()));
 
 
-        // xml link to news card
 
-//        tvNewsLink = v.findViewById(R.id.NewsLink);
-//        tvNewsLink.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent();
-//                intent.setAction(Intent.ACTION_VIEW);
-//                intent.addCategory(Intent.CATEGORY_BROWSABLE);
-//                intent.setData(Uri.parse());
-//                startActivity(intent);
-//            }
-//        });
 
         return v;
+    }
+
+    private void goToUrl (String url) {
+        Uri uriUrl = Uri.parse(url);
+        Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
+        startActivity(launchBrowser);
     }
 
     @Override
@@ -144,6 +138,12 @@ public class HomeFragmentNews extends Fragment {
         public void setLink(String link) {
             TextView post_link = (TextView) mview.findViewById(R.id.NewsLink);
             post_link.setText(link);
+            post_link.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    goToUrl (link);
+                }
+            });
 
 
         }
