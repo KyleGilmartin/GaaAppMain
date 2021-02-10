@@ -1,6 +1,7 @@
 package edu.itsligo.gaaappmain.Lotto;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -40,6 +41,8 @@ public class AdminFragmentLotto extends Fragment {
     int random_int;
 
 
+
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_admin_lotto, container, false);
@@ -50,6 +53,15 @@ public class AdminFragmentLotto extends Fragment {
         txt4 = v.findViewById(R.id.admintvNumber4);
         txt5 = v.findViewById(R.id.admintvNumber5);
         updateUser = v.findViewById(R.id.updateUser);
+
+        Button btnsetDate = v.findViewById(R.id.btnAdminSetLottoDate);
+        btnsetDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getContext(),SetLottoDate.class);
+                startActivity(intent);
+            }
+        });
 
 
         Button showWinner = v.findViewById(R.id.btShowWinner);

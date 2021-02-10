@@ -1,11 +1,14 @@
 package edu.itsligo.gaaappmain.Lotto;
 
 import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,6 +21,11 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+import cn.iwgang.countdownview.CountdownView;
 import edu.itsligo.gaaappmain.R;
 
 
@@ -28,6 +36,11 @@ public class HomeFragmentLotto extends Fragment {
     TextView firebase_name;
     FirebaseDatabase database;
     DatabaseReference databaseReference,reference;
+
+
+    private static final String TAG = "DATE1";
+
+    TextView showDate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -40,6 +53,35 @@ public class HomeFragmentLotto extends Fragment {
         tt4=v.findViewById(R.id.hometvNumber4);
         tt5=v.findViewById(R.id.hometvNumber5);
         show_winner();
+
+
+
+
+        CountdownView mCvCountdownView = v.findViewById(R.id.mycountdown);
+        //Intent incoming = getIntent();
+       // String getDate = incoming.getStringExtra("setDate");
+
+        showDate = v.findViewById(R.id.tvDate);
+       showDate.setText("date.mdate/cho");
+
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+        String countDate =    "02/03/2021 00:00:00";
+        Date now = new Date();
+
+        Log.d(TAG,countDate);
+
+
+        try {
+            Date date = sdf.parse(countDate);
+            long currentTime = now.getTime();
+            long newYearDate = date.getTime();
+            long countDownTimer = newYearDate - currentTime;
+
+            mCvCountdownView.start(countDownTimer);
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
 
         return v;
     }
