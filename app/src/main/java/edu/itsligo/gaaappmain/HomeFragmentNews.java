@@ -7,12 +7,14 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.text.method.LinkMovementMethod;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -78,10 +80,14 @@ public class HomeFragmentNews extends Fragment {
         return v;
     }
 
-    public void goToUrl(String url) {
+    public static void goToUrl(String url, Context context) {
+        if (url == null || url.isEmpty()) {
+            //Toast.makeText(context, "Sorry No link", Toast.LENGTH_SHORT).show();
+            return;
+        }
         Uri uriUrl = Uri.parse(url);
         Intent launchBrowser = new Intent(Intent.ACTION_VIEW, uriUrl);
-        startActivity(launchBrowser);
+        context.startActivity(launchBrowser);
     }
 
     @Override
@@ -116,7 +122,7 @@ public class HomeFragmentNews extends Fragment {
     }
 
 
-    public class NewsViewHolder extends RecyclerView.ViewHolder {
+    public static class NewsViewHolder extends RecyclerView.ViewHolder {
         View mview;
         TextView desc;
         TextView link;
@@ -138,7 +144,8 @@ public class HomeFragmentNews extends Fragment {
             post_link.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    goToUrl(link);
+                    goToUrl(link, itemView.getContext());
+
                 }
             });
 
