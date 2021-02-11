@@ -3,141 +3,92 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@android:color/white"
     android:layout_height="match_parent">
 
 
-
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:orientation="vertical">
+        android:layout_height="wrap_content"
+        android:background="@android:color/white">
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:scaleType="centerCrop"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/gaapic" />
 
 
-
-
-        <com.google.android.material.appbar.AppBarLayout
-            android:id="@+id/app_bar_layout"
+        <androidx.cardview.widget.CardView
+            android:id="@+id/homecard"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:fitsSystemWindows="true"
-            android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar">
+            android:elevation="5dp"
+            app:cardBackgroundColor="@color/white"
+            app:cardCornerRadius="15dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView3">
 
-            <com.google.android.material.appbar.CollapsingToolbarLayout
-                android:layout_width="match_parent"
-                android:layout_height="350dp"
-                android:fitsSystemWindows="true"
-                app:contentScrim="?attr/colorPrimary"
-                app:expandedTitleTextAppearance="@android:color/transparent"
-                app:layout_scrollFlags="scroll|exitUntilCollapsed">
-
-                <ImageView
-                    android:id="@+id/homeimg"
-                    android:layout_width="match_parent"
-                    android:layout_height="350dp"
-                    android:contentDescription="@string/app_name"
-                    android:scaleType="centerCrop"
-                    android:src="@drawable/gaapic"
-                    app:layout_collapseMode="parallax" />
-
-                <androidx.appcompat.widget.Toolbar
-                    android:id="@+id/toolbar"
-                    android:layout_width="match_parent"
-                    android:layout_height="181dp"
-                    android:title="@string/recent_news"
-                    app:layout_collapseMode="pin"
-                    app:popupTheme="@style/ThemeOverlay.AppCompat.Light" />
-
-
-            </com.google.android.material.appbar.CollapsingToolbarLayout>
-
-        </com.google.android.material.appbar.AppBarLayout>
-
-        <androidx.core.widget.NestedScrollView
-            android:layout_width="match_parent"
-            android:layout_height="279dp"
-            android:clipToPadding="false"
-            app:layout_behavior="@string/appbar_scrolling_view_behavior">
-
-            <androidx.cardview.widget.CardView
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                app:cardElevation="5dp"
-                app:cardUseCompatPadding="true"
+                android:orientation="vertical">
 
-                >
-
-                <LinearLayout
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical">
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:padding="12dp"
+                    android:text="@string/recent_news"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center"
-                        android:layout_marginTop="12dp"
-                        android:padding="12dp"
-                        android:text="@string/recent_news"
-                        android:textColor="@color/black"
-                        android:textSize="20sp"
-                        android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvhomePageDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_weight="9"
+                    android:gravity="center"
+                    android:text="@string/publish_date"
+                    android:textColor="@color/black"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
 
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal"
-                        android:padding="12dp">
-
-
-                        <TextView
-                            android:id="@+id/tvhomePageDate"
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center_vertical"
-                            android:layout_weight="9"
-                            android:gravity="center"
-                            android:padding="12dp"
-                            android:text="@string/publish_date"
-                            android:textColor="@color/black"
-                            android:textSize="14sp"
-                            android:textStyle="bold" />
-
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:lineSpacingMultiplier="1.5"
-                        android:padding="12dp"
-                        android:text="@string/in_news"
-                        android:textSize="13sp" />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:lineSpacingMultiplier="1.5"
+                    android:padding="12dp"
+                    android:text="@string/in_news"
+                    android:textSize="13sp" />
 
 
-                </LinearLayout>
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
 
-
-            </androidx.cardview.widget.CardView>
-
-
-        </androidx.core.widget.NestedScrollView>
 
         <TableLayout
             android:id="@+id/tableLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="20dp"
+            android:layout_marginTop="20dp"
             android:background="@android:color/white"
             android:elevation="90dp"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
+            app:layout_constraintTop_toBottomOf="@+id/homecard">
 
             <!-- Table Heading -->
-
             <TableRow android:background="@color/teal_200">
 
                 <TextView
@@ -373,17 +324,6 @@
 
         </TableLayout>
 
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Live"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.949"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.644" />
 
         <TextView
             android:id="@+id/tvTimeCheck"
@@ -392,12 +332,25 @@
             android:text=""
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.08"
+            app:layout_constraintHorizontal_bias="0.092"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.636" />
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout"
+            app:layout_constraintVertical_bias="0.589" />
+
+        <Button
+            android:id="@+id/button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:text="Live"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout"/>
 
 
 
-    </LinearLayout>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </ScrollView>
