@@ -53,12 +53,12 @@
 
 
         <TextView
+            android:id="@+id/tvHomeLottoDate"
             android:layout_width="match_parent"
             android:layout_height="37dp"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-condensed-light"
             android:gravity="center"
-            android:text="Next Lotto in"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -92,19 +92,6 @@
             app:suffixTextSize="12sp"
             app:timeTextColor="#FFFFFF"
             app:timeTextSize="40sp" />
-
-        <TextView
-            android:id="@+id/tvDate"
-            android:layout_width="match_parent"
-            android:layout_height="37dp"
-            android:layout_gravity="bottom"
-            android:layout_marginBottom="20dp"
-            android:fontFamily="@font/roboto_bold"
-            android:gravity="center"
-            android:text="date"
-            android:textColor="@color/black"
-            android:textSize="20dp"
-            android:textStyle="bold" />
 
 
     </androidx.cardview.widget.CardView>

@@ -31,79 +31,92 @@ import edu.itsligo.gaaappmain.R;
 
 public class HomeFragmentLotto extends Fragment {
 
-    TextView tt1,tt2,tt3,tt4,tt5,rdt12;
+    TextView tt1, tt2, tt3, tt4, tt5, rdt12;
 
     TextView firebase_name;
     FirebaseDatabase database;
-    DatabaseReference databaseReference,reference;
+    DatabaseReference databaseReference, reference;
 
 
     private static final String TAG = "DATE1";
 
-    TextView showDate;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_home_lotto, container, false);
-
-        firebase_name=v.findViewById(R.id.nameOfwinner);
-        tt1=v.findViewById(R.id.hometvNumber1);
-        tt2=v.findViewById(R.id.hometvNumber2);
-        tt3=v.findViewById(R.id.hometvNumber3);
-        tt4=v.findViewById(R.id.hometvNumber4);
-        tt5=v.findViewById(R.id.hometvNumber5);
+       TextView homeLottodate = v.findViewById(R.id.tvHomeLottoDate);
+        firebase_name = v.findViewById(R.id.nameOfwinner);
+        tt1 = v.findViewById(R.id.hometvNumber1);
+        tt2 = v.findViewById(R.id.hometvNumber2);
+        tt3 = v.findViewById(R.id.hometvNumber3);
+        tt4 = v.findViewById(R.id.hometvNumber4);
+        tt5 = v.findViewById(R.id.hometvNumber5);
         show_winner();
-
-
 
 
         CountdownView mCvCountdownView = v.findViewById(R.id.mycountdown);
         //Intent incoming = getIntent();
-       // String getDate = incoming.getStringExtra("setDate");
-
-        showDate = v.findViewById(R.id.tvDate);
-       showDate.setText("date.mdate/cho");
-
-        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
-        String countDate =    "02/03/2021 00:00:00";
-        Date now = new Date();
-
-        Log.d(TAG,countDate);
+        // String getDate = incoming.getStringExtra("setDate");
 
 
-        try {
-            Date date = sdf.parse(countDate);
-            long currentTime = now.getTime();
-            long newYearDate = date.getTime();
-            long countDownTimer = newYearDate - currentTime;
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("LottoDate");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String lottoDate = dataSnapshot.child("saveDate").getValue().toString();
+                homeLottodate.setText("Next Lotto in " + lottoDate);
 
-            mCvCountdownView.start(countDownTimer);
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+                SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm:ss");
+                String countDate = lottoDate + " 00:00:00";
+                Date now = new Date();
+
+                Log.d(TAG, countDate);
+
+
+                try {
+                    Date date = sdf.parse(countDate);
+                    long currentTime = now.getTime();
+                    long newYearDate = date.getTime();
+                    long countDownTimer = newYearDate - currentTime;
+
+                    mCvCountdownView.start(countDownTimer);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+
+
+
+
 
 
         return v;
     }
 
     private void show_winner() {
-        database=FirebaseDatabase.getInstance();
-        reference=databaseReference=database.getReference("lootloWinner");
+        database = FirebaseDatabase.getInstance();
+        reference = databaseReference = database.getReference("lootloWinner");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if(snapshot.exists())
-                {
+                if (snapshot.exists()) {
                     for (DataSnapshot snapshot1 : snapshot.getChildren()) {
-                        String cop=snapshot1.child("codeOfPerson").getValue(String.class);
-                        String nop=snapshot1.child("nameofPerson").getValue(String.class);
+                        String cop = snapshot1.child("codeOfPerson").getValue(String.class);
+                        String nop = snapshot1.child("nameofPerson").getValue(String.class);
 
 
                         firebase_name.setText(nop);
                         Toast.makeText(getContext(), nop, Toast.LENGTH_SHORT).show();
                         Toast.makeText(getContext(), cop, Toast.LENGTH_SHORT).show();
 
-                        int random_int=Integer.parseInt(cop);
+                        int random_int = Integer.parseInt(cop);
 
                         int n2 = random_int / 10000 % 10;
                         int n3 = random_int / 1000 % 10;
@@ -119,13 +132,10 @@ public class HomeFragmentLotto extends Fragment {
 
 
                     }
-                }
-                else
-                {
+                } else {
                     Toast.makeText(getContext(), "No USer Exists", Toast.LENGTH_SHORT).show();
                     firebase_name.setText("No USer Exists");
                 }
-
 
 
 //
@@ -138,7 +148,6 @@ public class HomeFragmentLotto extends Fragment {
             }
         });
     }
-
 
 
 }

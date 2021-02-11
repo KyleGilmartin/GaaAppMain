@@ -15,12 +15,14 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
+import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
@@ -34,6 +36,7 @@ import edu.itsligo.gaaappmain.R;
 public class AdminFragmentLotto extends Fragment {
     FirebaseDatabase database;
     DatabaseReference databaseReference;
+    FirebaseFirestore fStore;
 
     TextView txt1, txt2, txt3, txt4, txt5, updateUser;
     int min = 10000;
@@ -46,6 +49,10 @@ public class AdminFragmentLotto extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_admin_lotto, container, false);
+
+
+
+        fStore = FirebaseFirestore.getInstance();
 
         txt1 = v.findViewById(R.id.admintvNumber1);
         txt2 = v.findViewById(R.id.admintvNumber2);
@@ -131,6 +138,24 @@ public class AdminFragmentLotto extends Fragment {
                 });
             }
         });
+
+
+        TextView showdate = v.findViewById(R.id.tvAdminShowLottoDate);
+
+        databaseReference = FirebaseDatabase.getInstance().getReference().child("LottoDate");
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String lottoDate = dataSnapshot.child("saveDate").getValue().toString();
+                showdate.setText(lottoDate);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
 
 
         return v;
