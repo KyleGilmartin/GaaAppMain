@@ -135,7 +135,7 @@
                         android:layout_weight="2"
                         android:gravity="center_horizontal"
                         android:padding="10sp"
-                        android:text="GD"
+                        android:text="PD"
                         android:textColor="@android:color/black"
                         android:textSize="14sp" />
 

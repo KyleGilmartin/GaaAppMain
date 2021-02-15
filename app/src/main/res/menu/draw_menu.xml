@@ -7,15 +7,13 @@
         <item
             android:id="@+id/nav_Account"
             android:icon="@drawable/ic_profile"
-            android:title="Account" />
+            android:title="Profile" />
         <item
             android:id="@+id/nav_Games"
-            android:icon="@drawable/ic_games"
             android:title="Games" />
         <item
             android:id="@+id/nav_UserLotto"
-            android:icon="@drawable/ic_games"
-            android:title="Games" />
+            android:title="Lotto" />
 
     </group>
 

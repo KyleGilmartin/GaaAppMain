@@ -103,7 +103,8 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
 
                     int p1 = Integer.parseInt(Pos1);
                     int p2 = Integer.parseInt(Pos2);
-
+                    int p3 = Integer.parseInt(Pos3);
+                    // Team 1
                     if (p1 == 1) {
                         HomeFragmentHome.mPos1.setText(this.Pos1);
                         HomeFragmentHome.mClub1.setText(this.Club1);
@@ -122,6 +123,17 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
 
 
                     }
+
+                    if (p1 == 3) {
+                        HomeFragmentHome.mPos3.setText(this.Pos1);
+                        HomeFragmentHome.mClub3.setText(this.Club1);
+                        HomeFragmentHome.mGD3.setText(this.GD1);
+                        HomeFragmentHome.mWins3.setText(this.Wins1);
+                        HomeFragmentHome.mPts3.setText(this.Pts1);
+                    }
+
+
+                    // Team 2
                     if (p2 == 1) {
                         HomeFragmentHome.mPos1.setText(this.Pos2);
                         HomeFragmentHome.mClub1.setText(this.Club2);
@@ -137,6 +149,39 @@ public class fetchData extends AsyncTask<Void, Void, Void> {
                         HomeFragmentHome.mGD2.setText(this.GD2);
                         HomeFragmentHome.mWins2.setText(this.Wins2);
                         HomeFragmentHome.mPts2.setText(this.Pts2);
+                    }
+                    if (p2 == 3) {
+                        HomeFragmentHome.mPos3.setText(this.Pos2);
+                        HomeFragmentHome.mClub3.setText(this.Club2);
+                        HomeFragmentHome.mGD3.setText(this.GD2);
+                        HomeFragmentHome.mWins3.setText(this.Wins2);
+                        HomeFragmentHome.mPts3.setText(this.Pts2);
+                    }
+
+
+                    // Team 3
+                    if (p3 == 1) {
+                        HomeFragmentHome.mPos1.setText(this.Pos3);
+                        HomeFragmentHome.mClub1.setText(this.Club3);
+                        HomeFragmentHome.mGD1.setText(this.GD3);
+                        HomeFragmentHome.mWins1.setText(this.Wins3);
+                        HomeFragmentHome.mPts1.setText(this.Pts3);
+
+
+                    }
+                    if (p3 == 2) {
+                        HomeFragmentHome.mPos2.setText(this.Pos3);
+                        HomeFragmentHome.mClub2.setText(this.Club3);
+                        HomeFragmentHome.mGD2.setText(this.GD3);
+                        HomeFragmentHome.mWins2.setText(this.Wins3);
+                        HomeFragmentHome.mPts2.setText(this.Pts3);
+                    }
+                    if (p3 == 3) {
+                        HomeFragmentHome.mPos3.setText(this.Pos3);
+                        HomeFragmentHome.mClub3.setText(this.Club3);
+                        HomeFragmentHome.mGD3.setText(this.GD3);
+                        HomeFragmentHome.mWins3.setText(this.Wins3);
+                        HomeFragmentHome.mPts3.setText(this.Pts3);
                     }
 
 

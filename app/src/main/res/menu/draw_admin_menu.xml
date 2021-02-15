@@ -6,35 +6,27 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/nav_Account_admin"
-            android:icon="@drawable/ic_profile"
             android:title="Account" />
         <item
             android:id="@+id/nav_Games"
-            android:icon="@drawable/ic_games"
             android:title="Games" />
         <item
             android:id="@+id/nav_Fixture"
-            android:icon="@drawable/ic_games"
             android:title="Fixture" />
         <item
             android:id="@+id/nav_Gallery"
-            android:icon="@drawable/ic_games"
             android:title="Gallery" />
         <item
             android:id="@+id/nav_Users"
-            android:icon="@drawable/ic_games"
             android:title="User" />
         <item
             android:id="@+id/nav_News"
-            android:icon="@drawable/ic_games"
             android:title="News" />
         <item
             android:id="@+id/nav_Lotto"
-            android:icon="@drawable/ic_games"
             android:title="Lotto" />
         <item
             android:id="@+id/nav_Contact"
-            android:icon="@drawable/ic_games"
             android:title="Email" />
 
     </group>
