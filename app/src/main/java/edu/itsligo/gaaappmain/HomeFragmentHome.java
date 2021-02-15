@@ -18,6 +18,8 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.denzcoskun.imageslider.ImageSlider;
+import com.denzcoskun.imageslider.models.SlideModel;
 import com.firebase.ui.database.FirebaseRecyclerAdapter;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
@@ -25,8 +27,10 @@ import com.squareup.picasso.Picasso;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 import edu.itsligo.gaaappmain.APIFetch.fetchData;
@@ -75,7 +79,7 @@ public class HomeFragmentHome extends Fragment {
 
 
         String currentTime = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(new Date());
-        time.setText("Last Updated "+ currentTime);
+        time.setText("Last Updated " + currentTime);
 
 
         fetchData process = new fetchData();
@@ -90,14 +94,12 @@ public class HomeFragmentHome extends Fragment {
                 public void run() {
 
                     String currentTime = new SimpleDateFormat("h:mm a", Locale.getDefault()).format(new Date());
-                    time.setText("Last Updated "+ currentTime);
+                    time.setText("Last Updated " + currentTime);
                     fetchData process = new fetchData();
                     process.execute();
                 }
             }, 200000 * a);
         }
-
-
 
 
         button = v.findViewById(R.id.button);
@@ -113,10 +115,18 @@ public class HomeFragmentHome extends Fragment {
         // api end
 
 
+        ImageSlider imageSlider = v.findViewById(R.id.slider);
+
+        List<SlideModel> slideModels = new ArrayList<>();
+        slideModels.add(new SlideModel("https://pbs.twimg.com/media/DxmRWtvWsAAaRWV.jpg", "IT Sligo vs IT Tralee"));
+        slideModels.add(new SlideModel("https://pbs.twimg.com/media/DpF3u-xW0AA6KAa.jpg", "IT Sligo's Hurlers vs GMIT"));
+        slideModels.add(new SlideModel("https://old.itsligo.ie/files/2016/02/Hurlerstrophiesweb27022016.jpg", "Hurlers Win Fergal Maher Cup"));
+        slideModels.add(new SlideModel("https://img2.thejournal.ie/inline/1933493/original/?width=630&version=1933493", "IT Sligo's Eunan Doherty"));
+        slideModels.add(new SlideModel("https://pbs.twimg.com/media/Dy171AiXgAEucA-.jpg", "IT Sligo's Ladies"));
+        imageSlider.setImageList(slideModels, true);
 
 
-
-        return  v;
+        return v;
     }
 
 //    @Override
