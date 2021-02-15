@@ -125,8 +125,8 @@ public class AdminFragmentLotto extends Fragment {
                             updateUser.setText(nameofPerson);
                         }
                         else {
-                            Toast.makeText(getContext(), "NO User Exists", Toast.LENGTH_SHORT).show();
-                            updateUser.setText("NO User Exists");
+                            Toast.makeText(getContext(), "No winner this week", Toast.LENGTH_SHORT).show();
+                            updateUser.setText("No winner this week");
                         }
                     }
 

@@ -133,8 +133,8 @@ public class HomeFragmentLotto extends Fragment {
 
                     }
                 } else {
-                    Toast.makeText(getContext(), "No USer Exists", Toast.LENGTH_SHORT).show();
-                    firebase_name.setText("No USer Exists");
+                    Toast.makeText(getContext(), "No winner this week", Toast.LENGTH_SHORT).show();
+                    firebase_name.setText("No winner this week");
                 }
 
 
