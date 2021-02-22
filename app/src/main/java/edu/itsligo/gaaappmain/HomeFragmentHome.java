@@ -50,10 +50,10 @@ public class HomeFragmentHome extends Fragment {
 
 
         View v = inflater.inflate(R.layout.homefagment_home, container, false);
-        date = v.findViewById(R.id.tvhomePageDate);
+//        date = v.findViewById(R.id.tvhomePageDate);
         Calendar calendar = Calendar.getInstance();
         String currentDate = DateFormat.getDateInstance(DateFormat.FULL).format(calendar.getTime());
-        date.setText(currentDate);
+//        date.setText(currentDate);
 
         // api table
         // gets time for refreshing api calls
@@ -115,15 +115,15 @@ public class HomeFragmentHome extends Fragment {
         // api end
 
 
-        ImageSlider imageSlider = v.findViewById(R.id.slider);
-
-        List<SlideModel> slideModels = new ArrayList<>();
-        slideModels.add(new SlideModel("https://pbs.twimg.com/media/DxmRWtvWsAAaRWV.jpg", "IT Sligo vs IT Tralee"));
-        slideModels.add(new SlideModel("https://pbs.twimg.com/media/DpF3u-xW0AA6KAa.jpg", "IT Sligo's Hurlers vs GMIT"));
-        slideModels.add(new SlideModel("https://old.itsligo.ie/files/2016/02/Hurlerstrophiesweb27022016.jpg", "Hurlers Win Fergal Maher Cup"));
-        slideModels.add(new SlideModel("https://img2.thejournal.ie/inline/1933493/original/?width=630&version=1933493", "IT Sligo's Eunan Doherty"));
-        slideModels.add(new SlideModel("https://pbs.twimg.com/media/Dy171AiXgAEucA-.jpg", "IT Sligo's Ladies"));
-        imageSlider.setImageList(slideModels, true);
+//        ImageSlider imageSlider = v.findViewById(R.id.slider);
+//
+//        List<SlideModel> slideModels = new ArrayList<>();
+//        slideModels.add(new SlideModel("https://pbs.twimg.com/media/DxmRWtvWsAAaRWV.jpg", "IT Sligo vs IT Tralee"));
+//        slideModels.add(new SlideModel("https://pbs.twimg.com/media/DpF3u-xW0AA6KAa.jpg", "IT Sligo's Hurlers vs GMIT"));
+//        slideModels.add(new SlideModel("https://old.itsligo.ie/files/2016/02/Hurlerstrophiesweb27022016.jpg", "Hurlers Win Fergal Maher Cup"));
+//        slideModels.add(new SlideModel("https://img2.thejournal.ie/inline/1933493/original/?width=630&version=1933493", "IT Sligo's Eunan Doherty"));
+//        slideModels.add(new SlideModel("https://pbs.twimg.com/media/Dy171AiXgAEucA-.jpg", "IT Sligo's Ladies"));
+//        imageSlider.setImageList(slideModels, true);
 
 
         return v;

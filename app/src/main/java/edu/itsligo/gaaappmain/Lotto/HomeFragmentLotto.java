@@ -31,7 +31,7 @@ import edu.itsligo.gaaappmain.R;
 
 public class HomeFragmentLotto extends Fragment {
 
-    TextView tt1, tt2, tt3, tt4, tt5, rdt12;
+    TextView tt1, tt2, tt3, tt4, tt5;
 
     TextView firebase_name;
     FirebaseDatabase database;

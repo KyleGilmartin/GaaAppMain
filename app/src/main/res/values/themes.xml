@@ -1,16 +1,26 @@
 <resources>
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
         <!-- Customize your theme here. -->
-        <item name="colorPrimary">@color/purple_200</item>
-        <item name="colorPrimaryDark">@color/purple_500</item>
-        <item name="colorAccent">@color/accent_color</item>
-        <item name="backgroundColor1">#fcfcfc</item>
-        <item name="cardBackgroundColor">#ffffff</item>
-        <item name="textColor">#000000</item>
-        <item name="tintcolor">#ffffff</item>
-        <item name="buttoncolor">@color/colorPrimary</item>
-        <item name="android:windowAnimationStyle">@style/animation</item>
+<!--        <item name="colorPrimary">@color/purple_200</item>-->
+<!--        <item name="colorPrimaryDark">@color/purple_500</item>-->
+<!--        <item name="colorAccent">@color/accent_color</item>-->
+<!--        <item name="backgroundColor1">#fcfcfc</item>-->
+<!--        <item name="cardBackgroundColor">#ffffff</item>-->
+<!--        <item name="textColor">#000000</item>-->
+<!--        <item name="tintcolor">#ffffff</item>-->
+<!--        <item name="buttoncolor">@color/colorPrimary</item>-->
+<!--        <item name="android:windowAnimationStyle">@style/animation</item>-->
+
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryVariant">@color/colorPrimaryDark</item>
+        <item name="colorOnPrimary">@color/colorPrimaryLight</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/colorAccent</item>
+        <item name="colorSecondaryVariant">@color/colorWhite</item>
+        <item name="colorOnSecondary">@color/colorBackground</item>
+        <!-- Status bar color. -->
+
 
     </style>
 
@@ -36,6 +46,8 @@
 
 
     </style>
+
+
 
     <style name="AppTheme.NoActionBar">
         <item name="windowActionBar">false</item>

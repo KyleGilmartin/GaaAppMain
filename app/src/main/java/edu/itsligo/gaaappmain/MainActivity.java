@@ -292,4 +292,34 @@ public class MainActivity extends AppCompatActivity {
 
     public void DoLogin(View view) {
     }
+
+
+    public void doResults(View view) {
+        Intent intent = new Intent(this, HomeGamesStats.class);
+        startActivity(intent);
+    }
+
+    public void doNews(View view) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new HomeFragmentNews()).commit();
+    }
+
+    public void doLotto(View view) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new HomeFragmentLotto()).commit();
+    }
+
+    public void doDirections(View view) {
+        Intent map = new Intent(this, MapsActivity.class);
+        startActivity(map);
+    }
+
+    public void doGallery(View view) {
+        Toast.makeText(this, "Gallery", Toast.LENGTH_SHORT).show();
+    }
+
+    public void doContactUs(View view) {
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new HomeFragmentContact()).commit();
+    }
 }
