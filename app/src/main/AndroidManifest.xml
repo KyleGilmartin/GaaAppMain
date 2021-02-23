@@ -15,7 +15,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Workout.workoutMain"></activity>
+        <activity android:name=".Workout.workoutMain"  android:parentActivityName=".User"></activity>
         <activity android:name=".Lotto.SetLottoDate" />
 
         <meta-data
@@ -53,22 +53,22 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Workout.workout1"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".Workout.workoutMain" />
         <activity
             android:name=".Workout.workout2"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".Workout.workoutMain" />
         <activity
             android:name=".Workout.workout3"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".Workout.workoutMain" />
         <activity
             android:name=".Workout.rest"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".Workout.workoutMain" />
         <activity
             android:name=".Workout.rest2"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".Workout.workoutMain" />
         <activity
             android:name=".Workout.rest3"
-            android:theme="@style/AppTheme.NoActionBar" />
+            android:parentActivityName=".Workout.workoutMain" />
         <activity
             android:name=".Login"
             android:parentActivityName=".MainActivity" />
