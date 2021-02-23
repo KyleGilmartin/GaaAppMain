@@ -14,7 +14,7 @@ android:theme="@style/ThemeOverlay.AppCompat.Dark">
     android:src="@mipmap/ic_launcher_round"/>
 
 <TextView
-    android:id="@+id/usernamePlacehold"
+    android:id="@+id/usernamePlacehold1"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:paddingTop="8dp"

@@ -21,16 +21,15 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 
 import edu.itsligo.gaaappmain.Lotto.UserFragmentLotto;
+import edu.itsligo.gaaappmain.Workout.workoutMain;
 
 
 public class User extends AppCompatActivity {
 
     private DrawerLayout draw;
-    TextView email,username;
+    TextView email, username;
     FirebaseAuth fAuth;
     FirebaseFirestore fStore;
-
-
 
 
     @Override
@@ -46,19 +45,16 @@ public class User extends AppCompatActivity {
         username = (TextView) findViewById(R.id.usernamePlacehold);
 
 
-
-
-
 // firebase info to header
-                DocumentReference docRef = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
+        DocumentReference docRef = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
         docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
             @Override
             public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if(documentSnapshot.exists()){
+                if (documentSnapshot.exists()) {
 //
                     NavigationView navigationView = findViewById(R.id.nav_view_user);
                     View headerView = navigationView.getHeaderView(0);
-                    username = (TextView) headerView.findViewById(R.id.usernamePlacehold);
+                    username = (TextView) headerView.findViewById(R.id.usernamePlacehold1);
                     username.setText(documentSnapshot.getString("FullName"));
                     email = (TextView) headerView.findViewById(R.id.emailPlacehold);
                     email.setText(documentSnapshot.getString("UserEmail"));
@@ -67,30 +63,33 @@ public class User extends AppCompatActivity {
         });
 
 
-
         draw = findViewById(R.id.drawer_layout);
         // framnet for profile
         NavigationView navigationView = findViewById(R.id.nav_view_user);
 
 
-
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()){
+                switch (item.getItemId()) {
                     case R.id.nav_Account:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new ProfileFragment()).commit();
                         break;
-                    case  R.id.nav_Games:
+                    case R.id.nav_Games:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new GamesFragment()).commit();
 
                         break;
 
-                    case  R.id.nav_UserLotto:
+                    case R.id.nav_UserLotto:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new UserFragmentLotto()).commit();
+
+                        break;
+                    case R.id.nav_UserWorkout:
+                        Intent intent = new Intent(User.this, workoutMain.class);
+                        startActivity(intent);
 
                         break;
                     default:
@@ -106,14 +105,12 @@ public class User extends AppCompatActivity {
         draw.addDrawerListener(toggle);
         toggle.syncState();
 
-        if(savedInstanceState == null){
+        if (savedInstanceState == null) {
             getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                     new ProfileFragment()).commit();
             navigationView.setCheckedItem(R.id.nav_Account);
         }
     }
-
-
 
 
     @Override
@@ -136,6 +133,7 @@ public class User extends AppCompatActivity {
         startActivity(new Intent(getApplicationContext(), Login.class));
         finish();
     }
+
     // logout button profile fragment
     public void logout(View view) {
         FirebaseAuth.getInstance().signOut();
