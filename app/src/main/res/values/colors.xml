@@ -15,6 +15,7 @@
 
     <color name="colorPrimary">#333333</color>
     <color name="colorPrimaryDark">#000000</color>
+    <color name="colorPrimaryDark2">#1C1C1C</color>
     <color name="colorAccent">#515151</color>
     <color name="colorPrimaryLight">#E9F8F1</color>
     <color name="colorWhite">#FFFFFF</color>
