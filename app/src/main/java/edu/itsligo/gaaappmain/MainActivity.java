@@ -157,6 +157,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent map = new Intent(this, MapsActivity.class);
                 startActivity(map);
                 break;
+
             case R.id.nav_profile_Games:
                 Intent intent = new Intent(this, HomeGamesStats.class);
                 startActivity(intent);
@@ -166,7 +167,10 @@ public class MainActivity extends AppCompatActivity {
                         new HomeFragmentLotto()).commit();
                 break;
             case R.id.nav_profile_home:
+                Intent m = new Intent(this, Login.class);
+                startActivity(m);
                 login();
+
                 break;
             case R.id.nav_share_home:
                 Toast.makeText(this, "Share", Toast.LENGTH_SHORT).show();
@@ -302,6 +306,7 @@ public class MainActivity extends AppCompatActivity {
     public void doNews(View view) {
         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                 new HomeFragmentNews()).commit();
+
     }
 
     public void doLotto(View view) {
