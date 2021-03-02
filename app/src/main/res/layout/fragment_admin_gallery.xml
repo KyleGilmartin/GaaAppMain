@@ -20,6 +20,7 @@
         android:id="@+id/edit_image_name"
         android:layout_width="261dp"
         android:layout_height="wrap_content"
+        android:background="@drawable/bg_round"
         android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
         android:layout_toEndOf="@+id/button_choose_image"
