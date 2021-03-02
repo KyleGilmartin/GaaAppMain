@@ -4,6 +4,60 @@
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:elevation="90dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <EditText
+            android:id="@+id/etTitle"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/bg_round"
+            android:drawablePadding="10dp"
+            android:ems="10"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="20dp"
+            android:hint="Enter Subject"
+            android:inputType="textPersonName"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:textSize="21sp"
+         />
+
+        <EditText
+            android:id="@+id/etDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:ems="20"
+            android:hint="Enter Description"
+            android:lines="10"
+            android:padding="10dp"
+            android:textColor="@color/black"
+            android:textColorHint="@color/black"
+            android:background="@drawable/bg_round"
+            android:inputType="textMultiLine" />
+
+        <Button
+            android:id="@+id/btnSetTraining"
+            android:layout_width="wrap_content"
+            android:background="@drawable/button_background"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="64dp"
+            android:onClick="setTraining"
+            android:text="Set Training"
+            android:layout_gravity="center"
+          />
+
+    </LinearLayout>
+
 
     <Button
         android:id="@+id/button"
@@ -18,48 +72,6 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.992" />
 
-    <EditText
-        android:id="@+id/etTitle"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="150dp"
-        android:layout_marginBottom="176dp"
-        android:ems="10"
-        android:hint="Title"
-        android:background="@drawable/bg_round"
-        android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/etDescription"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
 
-    <EditText
-        android:id="@+id/etDescription"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
-        android:ems="10"
-        android:hint="Description"
-        android:lines="10"
-        android:background="@drawable/bg_round"
-        android:inputType="textMultiLine"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etTitle" />
-
-    <Button
-        android:id="@+id/btnSetTraining"
-        android:layout_width="wrap_content"
-        android:background="@drawable/button_background"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="64dp"
-        android:onClick="setTraining"
-        android:text="Set Training"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etDescription" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
