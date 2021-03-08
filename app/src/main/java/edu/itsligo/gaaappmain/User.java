@@ -41,26 +41,26 @@ public class User extends AppCompatActivity {
 
         fAuth = FirebaseAuth.getInstance();
         fStore = FirebaseFirestore.getInstance();
-        email = (TextView) findViewById(R.id.emailPlacehold);
+       // email = (TextView) findViewById(R.id.emailPlacehold);
         username = (TextView) findViewById(R.id.usernamePlacehold);
 
 
 // firebase info to header
-        DocumentReference docRef = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
-        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
-            @Override
-            public void onSuccess(DocumentSnapshot documentSnapshot) {
-                if (documentSnapshot.exists()) {
-//
-                    NavigationView navigationView = findViewById(R.id.nav_view_user);
-                    View headerView = navigationView.getHeaderView(0);
-                    username = (TextView) headerView.findViewById(R.id.usernamePlacehold1);
-                    username.setText(documentSnapshot.getString("FullName"));
-                    email = (TextView) headerView.findViewById(R.id.emailPlacehold);
-                    email.setText(documentSnapshot.getString("UserEmail"));
-                }
-            }
-        });
+//        DocumentReference docRef = fStore.collection("Users").document(fAuth.getCurrentUser().getUid());
+//        docRef.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+//            @Override
+//            public void onSuccess(DocumentSnapshot documentSnapshot) {
+//                if (documentSnapshot.exists()) {
+////
+//                    NavigationView navigationView = findViewById(R.id.nav_view_user);
+//                    View headerView = navigationView.getHeaderView(0);
+//                    username = (TextView) headerView.findViewById(R.id.usernamePlacehold1);
+//                    username.setText(documentSnapshot.getString("FullName"));
+//                    email = (TextView) headerView.findViewById(R.id.emailPlacehold);
+//                    email.setText(documentSnapshot.getString("UserEmail"));
+//                }
+//            }
+//        });
 
 
         draw = findViewById(R.id.drawer_layout);

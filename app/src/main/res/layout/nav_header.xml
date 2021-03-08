@@ -1,32 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-android:orientation="vertical"
-android:layout_width="match_parent"
-android:layout_height="176dp"
-android:gravity="bottom"
-android:background="@color/colorAccent"
-android:padding="16dp"
-android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    android:layout_width="match_parent"
+    android:layout_height="176dp"
+    android:background="@color/purple_200"
+    android:gravity="bottom"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:theme="@style/ThemeOverlay.AppCompat.Dark">
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-<ImageButton
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:src="@mipmap/ic_launcher_round"/>
+        <ImageView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_online" />
 
-<TextView
-    android:id="@+id/usernamePlacehold1"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:paddingTop="8dp"
-    android:text="PaceHolder"
-    android:textAppearance="@style/TextAppearance.AppCompat.Body1"/>
-<TextView
-    android:id="@+id/emailPlacehold"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    android:text="Email@placeholder"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:text="Online"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+
+    </LinearLayout>
 
 
+
+    <TextView
+        android:id="@+id/homeDate"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:paddingTop="8dp"
+        android:text="08/03/21"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+    <TextView
+        android:id="@+id/usernamePlacehold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Gaa App" />
 </LinearLayout>
 
-<!--Fix a bug-->
