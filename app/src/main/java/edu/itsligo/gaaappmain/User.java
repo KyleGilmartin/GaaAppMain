@@ -76,11 +76,6 @@ public class User extends AppCompatActivity {
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                                 new ProfileFragment()).commit();
                         break;
-                    case R.id.nav_Games:
-                        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                                new GamesFragment()).commit();
-
-                        break;
 
                     case R.id.nav_UserLotto:
                         getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
