@@ -24,6 +24,9 @@
         <item
             android:id="@+id/nav_profile_Lotto"
             android:title="Lotto" />
+        <item
+            android:id="@+id/nav_profile_gallery"
+            android:title="Gallery" />
     </group>
     <item android:title="Communicate">
         <menu>

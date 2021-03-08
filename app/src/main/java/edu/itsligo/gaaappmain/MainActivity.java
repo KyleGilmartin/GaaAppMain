@@ -153,10 +153,15 @@ public class MainActivity extends AppCompatActivity {
                 getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
                         new HomeFragmentContact()).commit();
                 break;
+            case R.id.nav_profile_gallery:
+                getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new HomeFragmentGallery()).commit();
+                break;
             case R.id.nav_profile_map:
                 Intent map = new Intent(this, MapsActivity.class);
                 startActivity(map);
                 break;
+
 
             case R.id.nav_profile_Games:
                 Intent intent = new Intent(this, HomeGamesStats.class);
@@ -320,7 +325,10 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void doGallery(View view) {
-        Toast.makeText(this, "Gallery", Toast.LENGTH_SHORT).show();
+
+        getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                new HomeFragmentGallery()).commit();
+
     }
 
     public void doContactUs(View view) {

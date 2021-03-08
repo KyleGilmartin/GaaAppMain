@@ -38,6 +38,7 @@
         <!-- <meta-data -->
         <!-- android:name="com.google.android.wearable.standalone" -->
         <!-- android:value="true" /> -->
+
         <activity
             android:name=".Games.HomeGamesStats"
             android:parentActivityName=".MainActivity" />

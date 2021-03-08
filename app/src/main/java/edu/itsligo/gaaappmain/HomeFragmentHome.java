@@ -115,7 +115,7 @@ public class HomeFragmentHome extends Fragment {
         // api end
 
 
-//        ImageSlider imageSlider = v.findViewById(R.id.slider);
+//       ImageSlider imageSlider = v.findViewById(R.id.slider);
 //
 //        List<SlideModel> slideModels = new ArrayList<>();
 //        slideModels.add(new SlideModel("https://pbs.twimg.com/media/DxmRWtvWsAAaRWV.jpg", "IT Sligo vs IT Tralee"));
